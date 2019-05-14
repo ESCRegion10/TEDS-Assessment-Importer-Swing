@@ -1,0 +1,4 @@
+For input string: "E1133"
+For input string: "Yes"
+Run complete.
+Logfile: C:/TEDSAI_GUI/resources/app/TEDSAI/Output/TEDS-AI-Log-201905101344.xlsx

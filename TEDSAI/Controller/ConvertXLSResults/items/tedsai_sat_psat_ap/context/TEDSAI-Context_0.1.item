@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<talendfile:ContextType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmi:id="_Vi-hcAhTEeijZM42QNdBiw" confirmationNeeded="false" name="Default">
+  <contextParameter xmi:id="_Vi-hcQhTEeijZM42QNdBiw" comment="The directory where XML output files will be created" name="OutputPath" prompt="OutputPath?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_Vi-hcghTEeijZM42QNdBiw" comment="The directory and filename of the input file" name="InputFile" prompt="InputFile?" promptNeeded="false" type="id_File" value=""/>
+  <contextParameter xmi:id="_Vi-hcwhTEeijZM42QNdBiw" comment="The type of file input (Excel, SAT, ACT, etc)" name="InputType" prompt="InputType?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_Vi-hdAhTEeijZM42QNdBiw" comment="The directory and filename of the Student interchange file to use for UID lookup" name="StudentXMLFile" prompt="StudentXMLFile?" promptNeeded="false" type="id_File" value=""/>
+  <contextParameter xmi:id="_Vi-hdQhTEeijZM42QNdBiw" comment="The TSDS collection year" name="CollectionYear" prompt="CollectionYear?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_Vi-hdghTEeijZM42QNdBiw" comment="The name of the TSDS collection" name="CollectionName" prompt="CollectionName?" promptNeeded="false" type="id_String" value="TSDS"/>
+  <contextParameter xmi:id="_Vi-hdwhTEeijZM42QNdBiw" comment="The six-digit County-District Number of the Local Education Agency (no dashes)" name="LEACDN" prompt="LEACDN?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_Vi-heAhTEeijZM42QNdBiw" comment="The full path and name of the Assessment Metadata interchange output file - calculated" name="AssessmentMetadataXMLFile" prompt="AssessmentMetadataXMLFile?" promptNeeded="false" type="id_String" value="AssessmentMetadata.xml"/>
+  <contextParameter xmi:id="_Vi-heQhTEeijZM42QNdBiw" comment="The full path and name of the Student Assessment interchange output file - calculated" name="StudentAssessmentXMLFile" prompt="StudentAssessmentXMLFile?" promptNeeded="false" type="id_String" value="StudentAssessment.xml"/>
+  <contextParameter xmi:id="_Vi-heghTEeijZM42QNdBiw" comment="The location of the master template file, used for metadata" name="MasterFile" prompt="MasterFile?" promptNeeded="false" type="id_File" value=""/>
+  <contextParameter xmi:id="_Vi-hewhTEeijZM42QNdBiw" comment="The full path and the file name of the data file used for manual Unique ID matches" name="UIDManualMatchFile" prompt="UIDManualMatchFile?" promptNeeded="false" type="id_File" value="C:/TalendWorkspaces/TEDS-Assessment-Importer/output/TEDS-AI-Manual-UID-yyyyMMddhhmm.xlsx"/>
+  <contextParameter xmi:id="_Vi-hfAhTEeijZM42QNdBiw" comment="" name="AssessmentsCSV" prompt="AssessmentsCSV?" promptNeeded="false" type="id_String" value="assessments.csv"/>
+  <contextParameter xmi:id="_Vi-hfQhTEeijZM42QNdBiw" comment="" name="ItemsDataCSV" prompt="ItemsDataCSV?" promptNeeded="false" type="id_String" value="itemsdata.csv"/>
+  <contextParameter xmi:id="_Vi-hfghTEeijZM42QNdBiw" comment="" name="FinalStudentAssessmentXMLFile" prompt="FinalStudentAssessmentXMLFile?" promptNeeded="false" type="id_String" value="FinalStudentAssessment.xml"/>
+  <contextParameter xmi:id="_Vi-hfwhTEeijZM42QNdBiw" comment="" name="ItemsCSV" prompt="ItemsCSV?" promptNeeded="false" type="id_String" value="items.csv"/>
+  <contextParameter xmi:id="_Vi-hgAhTEeijZM42QNdBiw" comment="" name="MergeCode" prompt="MergeCode?" promptNeeded="false" type="id_String" value="mergeXML.pl"/>
+  <contextParameter xmi:id="_Vi-hgQhTEeijZM42QNdBiw" comment="" name="ObjectivesCSV" prompt="ObjectivesCSV?" promptNeeded="false" type="id_String" value="objectives.csv"/>
+  <contextParameter xmi:id="_Vi-hgghTEeijZM42QNdBiw" comment="" name="ScoreTypesCSV" prompt="ScoreTypesCSV?" promptNeeded="false" type="id_String" value="scoretypes.csv"/>
+  <contextParameter xmi:id="_Vi-hgwhTEeijZM42QNdBiw" comment="" name="ScoreDataCSV" prompt="ScoreDataCSV?" promptNeeded="false" type="id_String" value="scoredata.csv"/>
+  <contextParameter xmi:id="_Vi-hhAhTEeijZM42QNdBiw" comment="" name="TempStudentAssessmentXMLFile" prompt="TempStudentAssessmentXMLFile?" promptNeeded="false" type="id_String" value="TempStudentAssessment.xml"/>
+  <contextParameter xmi:id="_Vi-hhQhTEeijZM42QNdBiw" comment="" name="StudentAssessmentXMLFileBkUp" prompt="StudentAssessmentXMLFileBkUp?" promptNeeded="false" type="id_String" value="StudentAssessment_backup.xml"/>
+  <contextParameter xmi:id="_Vi-hhghTEeijZM42QNdBiw" comment="" name="DeleteCSVFiles" prompt="DeleteCSVFiles?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_PpN14FnuEeisxox0qO335A" comment="" name="ContextFile" prompt="ContextFile?" promptNeeded="true" type="id_String" value=""/>
+</talendfile:ContextType>

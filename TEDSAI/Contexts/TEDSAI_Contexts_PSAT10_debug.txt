@@ -1,0 +1,37 @@
+##################################################################################################
+#
+#  	File:		TEDSAI_Contexts_PSAT10.txt
+#
+#  	Purpose:	File contains data to load context variables for TEDSAI processing
+#
+#	Revision History
+#	Date		Author			Remarks
+#	20170117	T. Esposito		original version.
+#   	
+#
+##################################################################################################
+
+CollectionYear=2018
+InputFile=C:/TEDSAI_PSAT10/Learning-ISD-PSAT10-2018-Sample.csv
+InputType=PSAT10
+LEACDN=701603
+OutputPath=C:/TEDSAI_PSAT10/Output/
+StudentXMLFile=C:/TEDSAI_PSAT10/701603_000_2018TSDS_201707121545_InterchangeStudentParentExtension.xml
+DeleteCSVFiles=N
+CollectionName=TSDS
+MasterFile=C:/TEDSAI_PSAT10/TEDS-AI-Template-Master.xlsx
+AssessmentMetadataXMLFile=AssessmentMetadata.xml
+StudentAssessmentXMLFile=StudentAssessment.xml
+StudentAssessmentXMLFileBkUp=StudentAssessment_backup.xml
+TempStudentAssessmentXMLFile=TempStudentAssessment.xml
+FinalStudentAssessmentXMLFile=FinalStudentAssessment.xml
+UIDManualMatchFile=C:/TalendWorkspaces/TEDS-Assessment-Importer/output/TEDS-AI-Manual-UID-yyyyMMddhhmm.xlsx
+ItemsCSV=items.csv
+ItemsDataCSV=itemsdata.csv
+ScoreTypesCSV=scoretypes.csv
+AssessmentsCSV=assessments.csv
+ScoreDataCSV=scoredata.csv
+ObjectivesCSV=objectives.csv
+# mergeXML.pl not used since no items
+MergeCode=mergeXML.pl
+fileEmpty=

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<root>
+<record>
+<FirstName><![CDATA[Joe]]></FirstName>
+<MiddleInitial/><![CDATA[T]]></MiddleInitial>
+<LastName><![CDATA[Smith]]></LastName>
+<BirthDate>2000-01-01</BirthDate>
+<SiteName>Test High School</SiteName>
+<LocalBackgroundQuestions name="Grade Level">11th grade</LocalBackgroundQuestions>
+<TestScores name="TSI Mathematics Placement"><![CDATA[310]]></TestScores>
+<TestScores name="ABE Mathematics Diagnostics"><![CDATA[3]]></TestScores>
+<TestScores name="ABE Diagnostics Math Number Sense"><![CDATA[3]]></TestScores>
+<TestScores name="ABE Diagnostics Math Patterns, Functions, and Algebra"><![CDATA[2]]></TestScores>
+<TestScores name="ABE Diagnostics Math Statistics and Probability"><![CDATA[1]]></TestScores>
+<TestScores name="ABE Diagnostics Math Geometry and Measurement"><![CDATA[1]]></TestScores>
+<TestScores name="Elementary Algebra and Functions"/>
+<TestScores name="Intermediate Algebra and Functions"/>
+<TestScores name="Geometry and Measurement"/>
+<TestScores name="Data Analysis, Statistics, and Probability"/>
+<TestScores name="TSI Reading Placement"><![CDATA[310]]></TestScores>
+<TestScores name="ABE Reading Diagnostics"><![CDATA[4]]></TestScores>
+<TestScores name="ABE Diagnostics Reading Vocabulary and Meaning"><![CDATA[4]]></TestScores>
+<TestScores name="ABE Diagnostics Reading Comprehension"><![CDATA[5]]></TestScores>
+<TestScores name="Main Idea and Supporting Details"/>
+<TestScores name="Author's Use of Language"/>
+<TestScores name="Inferences in a Text or Texts"/>
+<TestScores name="Literary Analysis"/>
+<TestScores name="TSI Writing Placement"><![CDATA[338]]></TestScores>
+<TestScores name="TSI WritePlacer 2017"><![CDATA[2]]></TestScores>
+<TestScores name="WritePlacer ESL"/>
+<TestScores name="ABE Writing Diagnostics"/><![CDATA[3]]></TestScores>
+<TestScores name="ABE Diagnostics Writing Organizing and Composing"/><![CDATA[3]]></TestScores>
+<TestScores name="ABE Diagnostics Writing Grammar and Structure"/><![CDATA[2]]></TestScores>
+<TestScores name="Sentence Structure"/>
+<TestScores name="Agreement"/>
+<TestScores name="Sentence Logic"/>
+<TestScores name="Essay Revision"/>
+</record>
+<record>
+<FirstName><![CDATA[Jane]]></FirstName>
+<MiddleInitial/><![CDATA[T]]></MiddleInitial>
+<LastName><![CDATA[Smith]]></LastName>
+<BirthDate>2000-01-01</BirthDate>
+<SiteName>Test High School</SiteName>
+<LocalBackgroundQuestions name="Grade Level">11th grade</LocalBackgroundQuestions>
+<TestScores name="TSI Mathematics Placement"><![CDATA[346]]></TestScores>
+<TestScores name="ABE Mathematics Diagnostics">
+<TestScores name="ABE Diagnostics Math Number Sense">
+<TestScores name="ABE Diagnostics Math Patterns, Functions, and Algebra">
+<TestScores name="ABE Diagnostics Math Statistics and Probability">
+<TestScores name="ABE Diagnostics Math Geometry and Measurement">
+<TestScores name="Elementary Algebra and Functions"/><![CDATA[5]]></TestScores>
+<TestScores name="Intermediate Algebra and Functions"/><![CDATA[4]]></TestScores>
+<TestScores name="Geometry and Measurement"/><![CDATA[4]]></TestScores>
+<TestScores name="Data Analysis, Statistics, and Probability"/><![CDATA[5]]></TestScores>
+<TestScores name="TSI Reading Placement"><![CDATA[349]]></TestScores>
+<TestScores name="ABE Reading Diagnostics">
+<TestScores name="ABE Diagnostics Reading Vocabulary and Meaning">
+<TestScores name="ABE Diagnostics Reading Comprehension">
+<TestScores name="Main Idea and Supporting Details"/><![CDATA[5]]></TestScores>
+<TestScores name="Author's Use of Language"/><![CDATA[5]]></TestScores>
+<TestScores name="Inferences in a Text or Texts"/><![CDATA[4]]></TestScores>
+<TestScores name="Literary Analysis"/><![CDATA[4]]></TestScores>
+<TestScores name="TSI Writing Placement"><![CDATA[342]]></TestScores>
+<TestScores name="TSI WritePlacer 2017"><![CDATA[4]]></TestScores>
+<TestScores name="WritePlacer ESL"/>
+<TestScores name="ABE Writing Diagnostics"/>
+<TestScores name="ABE Diagnostics Writing Organizing and Composing"/>
+<TestScores name="ABE Diagnostics Writing Grammar and Structure"/>
+<TestScores name="Sentence Structure"/>
+<TestScores name="Agreement"/>
+<TestScores name="Sentence Logic"/>
+<TestScores name="Essay Revision"/>
+</record>
+<record>
+<FirstName><![CDATA[College]]></FirstName>
+<MiddleInitial/><![CDATA[T]]></MiddleInitial>
+<LastName><![CDATA[Ready]]></LastName>
+<BirthDate>2000-01-01</BirthDate>
+<SiteName>Test High School</SiteName>
+<LocalBackgroundQuestions name="Grade Level">11th grade</LocalBackgroundQuestions>
+<TestScores name="TSI Mathematics Placement"><![CDATA[351]]></TestScores>
+<TestScores name="ABE Mathematics Diagnostics">
+<TestScores name="ABE Diagnostics Math Number Sense">
+<TestScores name="ABE Diagnostics Math Patterns, Functions, and Algebra">
+<TestScores name="ABE Diagnostics Math Statistics and Probability">
+<TestScores name="ABE Diagnostics Math Geometry and Measurement">
+<TestScores name="Elementary Algebra and Functions"/>
+<TestScores name="Intermediate Algebra and Functions"/>
+<TestScores name="Geometry and Measurement"/>
+<TestScores name="Data Analysis, Statistics, and Probability"/>
+<TestScores name="TSI Reading Placement"><![CDATA[350]]></TestScores>
+<TestScores name="ABE Reading Diagnostics">
+<TestScores name="ABE Diagnostics Reading Vocabulary and Meaning">
+<TestScores name="ABE Diagnostics Reading Comprehension">
+<TestScores name="Main Idea and Supporting Details"/>
+<TestScores name="Author's Use of Language"/>
+<TestScores name="Inferences in a Text or Texts"/>
+<TestScores name="Literary Analysis"/>
+<TestScores name="TSI Writing Placement"><![CDATA[342]]></TestScores>
+<TestScores name="TSI WritePlacer 2017"><![CDATA[4]]></TestScores>
+<TestScores name="WritePlacer ESL"/>
+<TestScores name="ABE Writing Diagnostics"/>
+<TestScores name="ABE Diagnostics Writing Organizing and Composing"/>
+<TestScores name="ABE Diagnostics Writing Grammar and Structure"/>
+<TestScores name="Sentence Structure"/>
+<TestScores name="Agreement"/>
+<TestScores name="Sentence Logic"/>
+<TestScores name="Essay Revision"/>
+</record>
+	
+</root>

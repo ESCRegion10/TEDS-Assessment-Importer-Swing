@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<talendfile:ContextType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmi:id="_0JIQ4NOZEeeNRo2ZNZ87OQ" confirmationNeeded="false" name="Default">
+  <contextParameter xmi:id="_0JIQ4dOZEeeNRo2ZNZ87OQ" comment="The directory where XML output files will be created" name="OutputPath" prompt="OutputPath?" promptNeeded="true" type="id_String" value=""/>
+  <contextParameter xmi:id="_0JIQ4tOZEeeNRo2ZNZ87OQ" comment="The directory and filename of the input file" name="InputFile" prompt="InputFile?" promptNeeded="true" type="id_File" value=""/>
+  <contextParameter xmi:id="_0JIQ49OZEeeNRo2ZNZ87OQ" comment="The type of file input (Excel, SAT, ACT, etc)" name="InputType" prompt="InputType?" promptNeeded="true" type="id_String" value=""/>
+  <contextParameter xmi:id="_0JIQ5NOZEeeNRo2ZNZ87OQ" comment="The directory and filename of the Student interchange file to use for UID lookup" name="StudentXMLFile" prompt="StudentXMLFile?" promptNeeded="true" type="id_File" value=""/>
+  <contextParameter xmi:id="_0JIQ5dOZEeeNRo2ZNZ87OQ" comment="The TSDS collection year" name="CollectionYear" prompt="CollectionYear?" promptNeeded="true" type="id_String" value=""/>
+  <contextParameter xmi:id="_0JIQ5tOZEeeNRo2ZNZ87OQ" comment="The name of the TSDS collection" name="CollectionName" prompt="CollectionName?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_0JIQ59OZEeeNRo2ZNZ87OQ" comment="The six-digit County-District Number of the Local Education Agency (no dashes)" name="LEACDN" prompt="LEACDN?" promptNeeded="true" type="id_String" value=""/>
+  <contextParameter xmi:id="_0JIQ6NOZEeeNRo2ZNZ87OQ" comment="The full path and name of the Assessment Metadata interchange output file - calculated" name="AssessmentMetadataXMLFile" prompt="AssessmentMetadataXMLFile?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_0JIQ6dOZEeeNRo2ZNZ87OQ" comment="The full path and name of the Student Assessment interchange output file - calculated" name="StudentAssessmentXMLFile" prompt="StudentAssessmentXMLFile?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_0JIQ6tOZEeeNRo2ZNZ87OQ" comment="The location of the master template file, used for metadata" name="MasterFile" prompt="MasterFile?" promptNeeded="true" type="id_File" value=""/>
+  <contextParameter xmi:id="_0JIQ69OZEeeNRo2ZNZ87OQ" comment="The full path and the file name of the data file used for manual Unique ID matches" name="UIDManualMatchFile" prompt="UIDManualMatchFile?" promptNeeded="false" type="id_File" value=""/>
+  <contextParameter xmi:id="_0JIQ7NOZEeeNRo2ZNZ87OQ" comment="" name="AssessmentsCSV" prompt="AssessmentsCSV?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_0JIQ7dOZEeeNRo2ZNZ87OQ" comment="" name="ItemsDataCSV" prompt="ItemsDataCSV?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_0JIQ7tOZEeeNRo2ZNZ87OQ" comment="" name="FinalStudentAssessmentXMLFile" prompt="FinalStudentAssessmentXMLFile?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_0JIQ79OZEeeNRo2ZNZ87OQ" comment="" name="ItemsCSV" prompt="ItemsCSV?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_0JIQ8NOZEeeNRo2ZNZ87OQ" comment="" name="MergeCode" prompt="MergeCode?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_0JIQ8dOZEeeNRo2ZNZ87OQ" comment="" name="ObjectivesCSV" prompt="ObjectivesCSV?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_0JIQ8tOZEeeNRo2ZNZ87OQ" comment="" name="ScoreTypesCSV" prompt="ScoreTypesCSV?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_0JIQ89OZEeeNRo2ZNZ87OQ" comment="" name="ScoreDataCSV" prompt="ScoreDataCSV?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_0JIQ9NOZEeeNRo2ZNZ87OQ" comment="" name="TempStudentAssessmentXMLFile" prompt="TempStudentAssessmentXMLFile?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_0JIQ9dOZEeeNRo2ZNZ87OQ" comment="" name="StudentAssessmentXMLFileBkUp" prompt="StudentAssessmentXMLFileBkUp?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_0JIQ9tOZEeeNRo2ZNZ87OQ" comment="" name="DeleteCSVFiles" prompt="DeleteCSVFiles?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_0JIQ99OZEeeNRo2ZNZ87OQ" comment="" name="Cloud" prompt="Cloud?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_0JIQ-NOZEeeNRo2ZNZ87OQ" comment="" name="Host" prompt="Host?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_0JIQ-dOZEeeNRo2ZNZ87OQ" comment="" name="Port" prompt="Port?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_0JIQ-tOZEeeNRo2ZNZ87OQ" comment="" name="Database" prompt="Database?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_0JIQ-9OZEeeNRo2ZNZ87OQ" comment="" name="Username" prompt="Username?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_0JIQ_NOZEeeNRo2ZNZ87OQ" comment="" name="Password" prompt="Password?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_0JIQ_dOZEeeNRo2ZNZ87OQ" comment="" name="SchoolYear" prompt="SchoolYear?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_0JIQ_tOZEeeNRo2ZNZ87OQ" comment="" name="TestId" prompt="TestId?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_0JIQ_9OZEeeNRo2ZNZ87OQ" comment="" name="TestIdFileCSV" prompt="TestIdFileCSV?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_0JIRANOZEeeNRo2ZNZ87OQ" comment="" name="TestTime" prompt="TestTime?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="_0JIRAdOZEeeNRo2ZNZ87OQ" comment="" name="HomeDir" prompt="HomeDir?" promptNeeded="true" type="id_String" value=""/>
+</talendfile:ContextType>

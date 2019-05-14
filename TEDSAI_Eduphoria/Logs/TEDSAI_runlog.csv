@@ -1,0 +1,174 @@
+LogCatcher;2019-02-01 19:45:06;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_1;Controller started - calling Eduphoria subjob;0
+LogCatcher;2019-02-01 19:45:06;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_2;Started Eduphoria_ConvertEduphoriaToCSV;0
+LogCatcher;2019-02-01 19:45:09;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;Java Exception;tAmazonMysqlConnection_1;com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure
+
+The last packet successfully received from the server was 2,372 milliseconds ago.  The last packet sent successfully to the server was 2,346 milliseconds ago.;1
+LogCatcher;2019-02-01 19:45:09;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_1;Begin CSV build;0
+LogCatcher;2019-02-01 19:45:09;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;Java Exception;tAmazonMysqlInput_1;java.lang.NullPointerException:null;1
+LogCatcher;2019-02-01 19:45:09;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_4;this is a warning;42
+LogCatcher;2019-02-01 19:45:09;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;Java Exception;tRunJob_18;java.lang.RuntimeException:Child job running failed;1
+LogCatcher;2019-02-01 19:45:10;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_2;Controller completed - calling Eduphoria subjob;0
+LogCatcher;2019-02-01 19:49:39;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_1;Controller started - calling Eduphoria subjob;0
+LogCatcher;2019-02-01 19:49:39;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_2;Started Eduphoria_ConvertEduphoriaToCSV;0
+LogCatcher;2019-02-01 19:49:41;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;Java Exception;tAmazonMysqlConnection_1;com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure
+
+The last packet successfully received from the server was 1,578 milliseconds ago.  The last packet sent successfully to the server was 1,566 milliseconds ago.;1
+LogCatcher;2019-02-01 19:49:41;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_1;Begin CSV build;0
+LogCatcher;2019-02-01 19:49:41;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;Java Exception;tAmazonMysqlInput_1;java.lang.NullPointerException:null;1
+LogCatcher;2019-02-01 19:49:41;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_4;this is a warning;42
+LogCatcher;2019-02-01 19:49:41;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;Java Exception;tRunJob_18;java.lang.RuntimeException:Child job running failed;1
+LogCatcher;2019-02-01 19:49:42;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_2;Controller completed - calling Eduphoria subjob;0
+LogCatcher;2019-02-01 19:50:07;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_1;Controller started - calling Eduphoria subjob;0
+LogCatcher;2019-02-01 19:50:07;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_2;Started Eduphoria_ConvertEduphoriaToCSV;0
+LogCatcher;2019-02-01 19:50:10;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;Java Exception;tAmazonMysqlConnection_1;com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure
+
+The last packet successfully received from the server was 2,110 milliseconds ago.  The last packet sent successfully to the server was 2,095 milliseconds ago.;1
+LogCatcher;2019-02-01 19:50:10;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_1;Begin CSV build;0
+LogCatcher;2019-02-01 19:50:10;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;Java Exception;tAmazonMysqlInput_1;java.lang.NullPointerException:null;1
+LogCatcher;2019-02-01 19:50:10;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_4;this is a warning;42
+LogCatcher;2019-02-01 19:50:10;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;Java Exception;tRunJob_18;java.lang.RuntimeException:Child job running failed;1
+LogCatcher;2019-02-01 19:50:11;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_2;Controller completed - calling Eduphoria subjob;0
+LogCatcher;2019-02-01 19:58:35;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_1;Controller started - calling Eduphoria subjob;0
+LogCatcher;2019-02-01 19:58:35;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_2;Started Eduphoria_ConvertEduphoriaToCSV;0
+LogCatcher;2019-02-01 19:58:37;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;Java Exception;tAmazonMysqlConnection_1;com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure
+
+The last packet successfully received from the server was 1,947 milliseconds ago.  The last packet sent successfully to the server was 1,926 milliseconds ago.;1
+LogCatcher;2019-02-01 19:58:37;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_1;Begin CSV build;0
+LogCatcher;2019-02-01 19:58:38;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;Java Exception;tAmazonMysqlInput_1;java.lang.NullPointerException:null;1
+LogCatcher;2019-02-01 19:58:38;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_4;this is a warning;42
+LogCatcher;2019-02-01 19:58:38;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;Java Exception;tRunJob_18;java.lang.RuntimeException:Child job running failed;1
+LogCatcher;2019-02-01 19:58:38;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_2;Controller completed - calling Eduphoria subjob;0
+LogCatcher;2019-02-01 19:59:59;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_1;Controller started - calling Eduphoria subjob;0
+LogCatcher;2019-02-01 19:59:59;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_2;Started Eduphoria_ConvertEduphoriaToCSV;0
+LogCatcher;2019-02-01 20:00:01;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;Java Exception;tAmazonMysqlConnection_1;com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure
+
+The last packet successfully received from the server was 1,986 milliseconds ago.  The last packet sent successfully to the server was 1,967 milliseconds ago.;1
+LogCatcher;2019-02-01 20:00:01;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_1;Begin CSV build;0
+LogCatcher;2019-02-01 20:00:02;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;Java Exception;tAmazonMysqlInput_1;java.lang.NullPointerException:null;1
+LogCatcher;2019-02-01 20:00:02;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_4;this is a warning;42
+LogCatcher;2019-02-01 20:00:02;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;Java Exception;tRunJob_18;java.lang.RuntimeException:Child job running failed;1
+LogCatcher;2019-02-01 20:00:02;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_2;Controller completed - calling Eduphoria subjob;0
+LogCatcher;2019-02-01 20:00:53;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_1;Controller started - calling Eduphoria subjob;0
+LogCatcher;2019-02-01 20:00:54;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_2;Started Eduphoria_ConvertEduphoriaToCSV;0
+LogCatcher;2019-02-01 20:00:56;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;Java Exception;tAmazonMysqlConnection_1;com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure
+
+The last packet successfully received from the server was 1,771 milliseconds ago.  The last packet sent successfully to the server was 1,753 milliseconds ago.;1
+LogCatcher;2019-02-01 20:00:56;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_1;Begin CSV build;0
+LogCatcher;2019-02-01 20:00:56;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;Java Exception;tAmazonMysqlInput_1;java.lang.NullPointerException:null;1
+LogCatcher;2019-02-01 20:00:56;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_4;this is a warning;42
+LogCatcher;2019-02-01 20:00:56;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;Java Exception;tRunJob_18;java.lang.RuntimeException:Child job running failed;1
+LogCatcher;2019-02-01 20:00:57;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_2;Controller completed - calling Eduphoria subjob;0
+LogCatcher;2019-02-01 20:06:40;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_1;Controller started - calling Eduphoria subjob;0
+LogCatcher;2019-02-01 20:06:40;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_2;Started Eduphoria_ConvertEduphoriaToCSV;0
+LogCatcher;2019-02-01 20:06:43;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;Java Exception;tAmazonMysqlConnection_1;com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure
+
+The last packet successfully received from the server was 1,979 milliseconds ago.  The last packet sent successfully to the server was 1,964 milliseconds ago.;1
+LogCatcher;2019-02-01 20:06:43;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_1;Begin CSV build;0
+LogCatcher;2019-02-01 20:06:43;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;Java Exception;tAmazonMysqlInput_1;java.lang.NullPointerException:null;1
+LogCatcher;2019-02-01 20:06:43;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_4;this is a warning;42
+LogCatcher;2019-02-01 20:06:43;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;Java Exception;tRunJob_18;java.lang.RuntimeException:Child job running failed;1
+LogCatcher;2019-02-01 20:06:44;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_2;Controller completed - calling Eduphoria subjob;0
+LogCatcher;2019-02-01 20:07:26;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_1;Controller started - calling Eduphoria subjob;0
+LogCatcher;2019-02-01 20:07:26;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_2;Started Eduphoria_ConvertEduphoriaToCSV;0
+LogCatcher;2019-02-01 20:07:29;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;Java Exception;tAmazonMysqlConnection_1;com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure
+
+The last packet successfully received from the server was 2,061 milliseconds ago.  The last packet sent successfully to the server was 2,046 milliseconds ago.;1
+LogCatcher;2019-02-01 20:07:29;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_1;Begin CSV build;0
+LogCatcher;2019-02-01 20:07:29;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;Java Exception;tAmazonMysqlInput_1;java.lang.NullPointerException:null;1
+LogCatcher;2019-02-01 20:07:29;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_4;this is a warning;42
+LogCatcher;2019-02-01 20:07:29;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;Java Exception;tRunJob_18;java.lang.RuntimeException:Child job running failed;1
+LogCatcher;2019-02-01 20:07:30;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_2;Controller completed - calling Eduphoria subjob;0
+LogCatcher;2019-02-01 20:08:12;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_1;Controller started - calling Eduphoria subjob;0
+LogCatcher;2019-02-01 20:08:12;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_2;Started Eduphoria_ConvertEduphoriaToCSV;0
+LogCatcher;2019-02-01 20:08:15;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;Java Exception;tAmazonMysqlConnection_1;com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure
+
+The last packet successfully received from the server was 1,789 milliseconds ago.  The last packet sent successfully to the server was 1,772 milliseconds ago.;1
+LogCatcher;2019-02-01 20:08:15;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_1;Begin CSV build;0
+LogCatcher;2019-02-01 20:08:15;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;Java Exception;tAmazonMysqlInput_1;java.lang.NullPointerException:null;1
+LogCatcher;2019-02-01 20:08:15;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_4;this is a warning;42
+LogCatcher;2019-02-01 20:08:15;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;Java Exception;tRunJob_18;java.lang.RuntimeException:Child job running failed;1
+LogCatcher;2019-02-01 20:08:15;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_2;Controller completed - calling Eduphoria subjob;0
+LogCatcher;2019-02-01 20:09:22;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_1;Controller started - calling Eduphoria subjob;0
+LogCatcher;2019-02-01 20:09:23;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_2;Started Eduphoria_ConvertEduphoriaToCSV;0
+LogCatcher;2019-02-01 20:09:25;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;Java Exception;tAmazonMysqlConnection_1;com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure
+
+The last packet successfully received from the server was 2,276 milliseconds ago.  The last packet sent successfully to the server was 2,261 milliseconds ago.;1
+LogCatcher;2019-02-01 20:09:25;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_1;Begin CSV build;0
+LogCatcher;2019-02-01 20:09:25;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;Java Exception;tAmazonMysqlInput_1;java.lang.NullPointerException:null;1
+LogCatcher;2019-02-01 20:09:25;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_4;this is a warning;42
+LogCatcher;2019-02-01 20:09:25;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;Java Exception;tRunJob_18;java.lang.RuntimeException:Child job running failed;1
+LogCatcher;2019-02-01 20:09:26;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_2;Controller completed - calling Eduphoria subjob;0
+LogCatcher;2019-02-01 20:19:19;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_1;Controller started - calling Eduphoria subjob;0
+LogCatcher;2019-02-01 20:19:19;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_2;Started Eduphoria_ConvertEduphoriaToCSV;0
+LogCatcher;2019-02-01 20:19:23;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_1;Begin CSV build;0
+LogCatcher;2019-02-01 20:20:42;TEDSAI_GUI_EDUPHORIA;Eduphoria_StudentAssessmentXML;Default;tWarn;tWarn_3;Started Eduphoria_StudentAssessmentXML;0
+LogCatcher;2019-02-01 20:24:51;TEDSAI_GUI_EDUPHORIA;Eduphoria_StudentAssessmentXML;Default;Java Exception;tFileCopy_1;java.lang.RuntimeException:The source File "C:/Users/espositot/projects/TEDS-Assessment-Importer/electron/TEDSAI_GUI/TEDSAI/Output/StudentAssessment.xml" does not exist or is not a file.;1
+LogCatcher;2019-02-01 20:24:51;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;Java Exception;tRunJob_3;java.lang.RuntimeException:Child job running failed;1
+LogCatcher;2019-02-01 20:24:51;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_4;this is a warning;42
+LogCatcher;2019-02-01 20:24:51;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;Java Exception;tRunJob_18;java.lang.RuntimeException:Child job running failed;1
+LogCatcher;2019-02-01 20:24:51;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_2;Controller completed - calling Eduphoria subjob;0
+LogCatcher;2019-02-01 20:27:43;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_1;Controller started - calling Eduphoria subjob;0
+LogCatcher;2019-02-01 20:27:43;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_2;Started Eduphoria_ConvertEduphoriaToCSV;0
+LogCatcher;2019-02-01 20:27:46;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_1;Begin CSV build;0
+LogCatcher;2019-02-01 20:29:04;TEDSAI_GUI_EDUPHORIA;Eduphoria_StudentAssessmentXML;Default;tWarn;tWarn_3;Started Eduphoria_StudentAssessmentXML;0
+LogCatcher;2019-02-01 20:33:31;TEDSAI_GUI_EDUPHORIA;Eduphoria_StudentAssessmentXML;Default;Java Exception;tFileCopy_1;java.lang.RuntimeException:The source File "C:/Users/espositot/projects/TEDS-Assessment-Importer/electron/TEDSAI_GUI/TEDSAI/Output/StudentAssessment.xml" does not exist or is not a file.;1
+LogCatcher;2019-02-01 20:33:31;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;Java Exception;tRunJob_3;java.lang.RuntimeException:Child job running failed;1
+LogCatcher;2019-02-01 20:33:31;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_4;this is a warning;42
+LogCatcher;2019-02-01 20:33:31;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;Java Exception;tRunJob_18;java.lang.RuntimeException:Child job running failed;1
+LogCatcher;2019-02-01 20:33:31;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_2;Controller completed - calling Eduphoria subjob;0
+LogCatcher;2019-02-02 15:29:56;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_1;Controller started - calling Eduphoria subjob;0
+LogCatcher;2019-02-02 15:29:56;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_2;Started Eduphoria_ConvertEduphoriaToCSV;0
+LogCatcher;2019-02-02 15:29:59;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_1;Begin CSV build;0
+LogCatcher;2019-02-02 15:31:14;TEDSAI_GUI_EDUPHORIA;Eduphoria_StudentAssessmentXML;Default;tWarn;tWarn_3;Started Eduphoria_StudentAssessmentXML;0
+LogCatcher;2019-02-02 15:34:47;TEDSAI_GUI_EDUPHORIA;Eduphoria_StudentAssessmentXML;Default;tWarn;tWarn_2;Ended Eduphoria_StudentAssessmentXML;0
+LogCatcher;2019-02-02 15:34:48;TEDSAI_GUI_EDUPHORIA;Eduphoria_AssessmentMetaXML;Default;tWarn;tWarn_7;Started Eduphoria_AssessmentMetaXML;0
+LogCatcher;2019-02-02 15:34:48;TEDSAI_GUI_EDUPHORIA;Eduphoria_AssessmentMetaXML;Default;tWarn;tWarn_1;Do Objectives Complex Type?;0
+LogCatcher;2019-02-02 15:34:48;TEDSAI_GUI_EDUPHORIA;Eduphoria_AssessmentMetaXML;Default;tWarn;tWarn_3;Do Objectives Learning Type?;0
+LogCatcher;2019-02-02 15:34:48;TEDSAI_GUI_EDUPHORIA;Eduphoria_AssessmentMetaXML;Default;tWarn;tWarn_6;Do Learning Objective?;0
+LogCatcher;2019-02-02 15:34:48;TEDSAI_GUI_EDUPHORIA;Eduphoria_AssessmentMetaXML;Default;tWarn;tWarn_4;Do Learning Standard?;0
+LogCatcher;2019-02-02 15:34:48;TEDSAI_GUI_EDUPHORIA;Eduphoria_AssessmentMetaXML;Default;tWarn;tWarn_2;Ended Eduphoria_AssessmentMetaXML;0
+LogCatcher;2019-02-02 15:34:48;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_4;this is a warning;42
+LogCatcher;2019-02-02 15:34:48;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_2;Controller completed - calling Eduphoria subjob;0
+LogCatcher;2019-02-05 15:45:58;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_1;Controller started - calling Eduphoria subjob;0
+LogCatcher;2019-02-05 15:45:58;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_2;Started Eduphoria_ConvertEduphoriaToCSV;0
+LogCatcher;2019-02-05 15:46:00;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;Java Exception;tAmazonMysqlConnection_1;com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure
+
+The last packet successfully received from the server was 1,351 milliseconds ago.  The last packet sent successfully to the server was 1,342 milliseconds ago.;1
+LogCatcher;2019-02-05 15:46:00;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_1;Begin CSV build;0
+LogCatcher;2019-02-05 15:46:00;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;Java Exception;tAmazonMysqlInput_1;java.lang.NullPointerException:null;1
+LogCatcher;2019-02-05 15:46:00;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_4;this is a warning;42
+LogCatcher;2019-02-05 15:46:00;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;Java Exception;tRunJob_18;java.lang.RuntimeException:Child job running failed;1
+LogCatcher;2019-02-05 15:46:01;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_2;Controller completed - calling Eduphoria subjob;0
+LogCatcher;2019-02-05 15:49:18;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_1;Controller started - calling Eduphoria subjob;0
+LogCatcher;2019-02-05 15:49:18;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_2;Started Eduphoria_ConvertEduphoriaToCSV;0
+LogCatcher;2019-02-05 15:49:20;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;Java Exception;tAmazonMysqlConnection_1;com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure
+
+The last packet successfully received from the server was 1,218 milliseconds ago.  The last packet sent successfully to the server was 1,206 milliseconds ago.;1
+LogCatcher;2019-02-05 15:49:20;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_1;Begin CSV build;0
+LogCatcher;2019-02-05 15:49:20;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;Java Exception;tAmazonMysqlInput_1;java.lang.NullPointerException:null;1
+LogCatcher;2019-02-05 15:49:20;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_4;this is a warning;42
+LogCatcher;2019-02-05 15:49:20;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;Java Exception;tRunJob_18;java.lang.RuntimeException:Child job running failed;1
+LogCatcher;2019-02-05 15:49:21;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_2;Controller completed - calling Eduphoria subjob;0
+LogCatcher;2019-02-05 15:53:36;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_1;Controller started - calling Eduphoria subjob;0
+LogCatcher;2019-02-05 15:53:36;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_2;Started Eduphoria_ConvertEduphoriaToCSV;0
+LogCatcher;2019-02-05 15:53:38;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;Java Exception;tAmazonMysqlConnection_1;com.mysql.jdbc.exceptions.jdbc4.CommunicationsException:Communications link failure
+
+The last packet successfully received from the server was 1,268 milliseconds ago.  The last packet sent successfully to the server was 1,254 milliseconds ago.;1
+LogCatcher;2019-02-05 15:53:38;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_1;Begin CSV build;0
+LogCatcher;2019-02-05 15:53:38;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;Java Exception;tAmazonMysqlInput_1;java.lang.NullPointerException:null;1
+LogCatcher;2019-02-05 15:53:38;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_4;this is a warning;42
+LogCatcher;2019-02-05 15:53:38;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;Java Exception;tRunJob_18;java.lang.RuntimeException:Child job running failed;1
+LogCatcher;2019-02-05 15:53:39;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_2;Controller completed - calling Eduphoria subjob;0
+LogCatcher;2019-02-05 15:57:31;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_1;Controller started - calling Eduphoria subjob;0
+LogCatcher;2019-02-05 15:57:31;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_2;Started Eduphoria_ConvertEduphoriaToCSV;0
+LogCatcher;2019-02-05 15:57:33;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_1;Begin CSV build;0
+LogCatcher;2019-02-05 15:57:34;TEDSAI_GUI_EDUPHORIA;Eduphoria_StudentAssessmentXML;Default;tWarn;tWarn_3;Started Eduphoria_StudentAssessmentXML;0
+LogCatcher;2019-02-05 15:57:51;TEDSAI_GUI_EDUPHORIA;Eduphoria_StudentAssessmentXML;Default;tWarn;tWarn_2;Ended Eduphoria_StudentAssessmentXML;0
+LogCatcher;2019-02-05 15:57:51;TEDSAI_GUI_EDUPHORIA;Eduphoria_AssessmentMetaXML;Default;tWarn;tWarn_7;Started Eduphoria_AssessmentMetaXML;0
+LogCatcher;2019-02-05 15:57:52;TEDSAI_GUI_EDUPHORIA;Eduphoria_AssessmentMetaXML;Default;tWarn;tWarn_1;Do Objectives Complex Type?;0
+LogCatcher;2019-02-05 15:57:52;TEDSAI_GUI_EDUPHORIA;Eduphoria_AssessmentMetaXML;Default;tWarn;tWarn_3;Do Objectives Learning Type?;0
+LogCatcher;2019-02-05 15:57:52;TEDSAI_GUI_EDUPHORIA;Eduphoria_AssessmentMetaXML;Default;tWarn;tWarn_6;Do Learning Objective?;0
+LogCatcher;2019-02-05 15:57:52;TEDSAI_GUI_EDUPHORIA;Eduphoria_AssessmentMetaXML;Default;tWarn;tWarn_4;Do Learning Standard?;0
+LogCatcher;2019-02-05 15:57:52;TEDSAI_GUI_EDUPHORIA;Eduphoria_AssessmentMetaXML;Default;tWarn;tWarn_2;Ended Eduphoria_AssessmentMetaXML;0
+LogCatcher;2019-02-05 15:57:52;TEDSAI_GUI_EDUPHORIA;Eduphoria_ConvertEduphoriaToCSV;Default;tWarn;tWarn_4;this is a warning;42
+LogCatcher;2019-02-05 15:57:52;TEDSAI_GUI_EDUPHORIA;Eduphoria_Controller;Default;tWarn;tWarn_2;Controller completed - calling Eduphoria subjob;0

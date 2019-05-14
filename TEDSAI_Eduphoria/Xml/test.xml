@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<InterchangeStudentParent xsi:schemaLocation="http://www.tea.state.tx.us/tsds InterchangeStudentParentExtension.xsd" xmlns="http://www.tea.state.tx.us/tsds" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Student id="STU_000005">
+        <StudentUniqueStateId>1234567890</StudentUniqueStateId>
+        <StudentIdentificationCode IdentificationSystem="District">
+            <IdentificationCode>000005</IdentificationCode>
+        </StudentIdentificationCode>
+        <StudentIdentificationCode IdentificationSystem="State">
+            <IdentificationCode>123456789</IdentificationCode>
+        </StudentIdentificationCode>
+        <Name>
+            <FirstName>John</FirstName>
+            <MiddleName>Allen</MiddleName>
+            <LastSurname>Doe</LastSurname>
+        </Name>
+        <Sex>Male</Sex>
+        <BirthData>
+            <BirthDate>2001-01-02</BirthDate>
+        </BirthData>
+        <HispanicLatinoEthnicity>true</HispanicLatinoEthnicity>
+        <OldEthnicity>Hispanic</OldEthnicity>
+        <Race>
+            <RacialCategory>White</RacialCategory>
+        </Race>
+        <EconomicDisadvantaged>true</EconomicDisadvantaged>
+        <SchoolFoodServicesEligibility>Free</SchoolFoodServicesEligibility>
+        <LimitedEnglishProficiency>NotLimited</LimitedEnglishProficiency>
+        <Languages>
+            <Language>English</Language>
+        </Languages>
+        <HomeLanguages>
+            <Language>English</Language>
+        </HomeLanguages>
+        <StudentIndicators>
+            <IndicatorName>At Risk</IndicatorName>
+            <Indicator>true</Indicator>
+        </StudentIndicators>
+        <TX-LEAReference>
+            <EducationalOrgIdentity>
+                <StateOrganizationId>123456</StateOrganizationId>
+            </EducationalOrgIdentity>
+        </TX-LEAReference>
+    </Student>
+    <Parent id="PRNT_20000013">
+        <ParentUniqueStateId>20000013</ParentUniqueStateId>
+        <Name>
+            <FirstName>Jane</FirstName>
+            <LastSurname>Doe</LastSurname>
+        </Name>
+        <Address AddressType="Home">
+            <StreetNumberName>1234 Main St</StreetNumberName>
+            <City>Tumbleweed</City>
+            <StateAbbreviation>TX</StateAbbreviation>
+            <PostalCode>76543</PostalCode>
+        </Address>
+        <Telephone TelephoneNumberType="Mobile">
+            <TelephoneNumber>(123) 456-1111</TelephoneNumber>
+        </Telephone>
+        <ElectronicMail EmailAddressType="Other">
+            <EmailAddress>janedoe@yahoo.com</EmailAddress>
+        </ElectronicMail>
+    </Parent>
+    <StudentParentAssociation>
+        <StudentReference ref="STU_000005"/>
+        <ParentReference ref="PRNT_20000013"/>
+        <Relation>Parent</Relation>
+        <PrimaryContactStatus>true</PrimaryContactStatus>
+        <LivesWith>true</LivesWith>
+        <EmergencyContactStatus>true</EmergencyContactStatus>
+        <ContactPriority>1</ContactPriority>
+    </StudentParentAssociation>
+</InterchangeStudentParent>    

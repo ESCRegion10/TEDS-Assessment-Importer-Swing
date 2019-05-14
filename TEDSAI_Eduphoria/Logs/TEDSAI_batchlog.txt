@@ -1,0 +1,10 @@
+Warning: Parameter "TestIdFileCSV" has not been set by tContextLoad_1
+Warning: Parameter "TestTime" has not been set by tContextLoad_1
+Warning: Parameter "SchoolYear" has not been set by tContextLoad_1
+Warning: Parameter "TestId" has not been set by tContextLoad_1
+Warning: Parameter "HomeDir" has not been set by tContextLoad_1
+12302
+0000
+Perl program to merge files -> Successful
+Run complete.
+Logfile: C:/TEDSAI_GUI/resources/app/TEDSAI_Eduphoria/Logs/TEDS-AI-Log-20190205155731.xlsx

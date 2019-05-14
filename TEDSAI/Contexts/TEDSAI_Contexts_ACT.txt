@@ -1,0 +1,37 @@
+##################################################################################################
+#
+#  	File:	TEDSAI_Contexts_ACT.txt
+#
+#  	Purpose:	File contains data to load context variables for TEDSAI processing
+#
+#	Revision History
+#	Date		Author			Remarks
+#	20170117	T. Esposito		original version.
+#   	
+#
+##################################################################################################
+
+CollectionYear=2018
+#MasterFile=
+#InputFile=
+InputType=ACT
+LEACDN=701603
+OutputPath=C:/Users/espositot/projects/TEDS-Assessment-Importer/electron/TEDSAI_GUI/TEDSAI/Output/
+#StudentXMLFile=
+DeleteCSVFiles=N
+CollectionName=TSDS
+AssessmentMetadataXMLFile=AssessmentMetadata.xml
+StudentAssessmentXMLFile=StudentAssessment.xml
+StudentAssessmentXMLFileBkUp=StudentAssessment_backup.xml
+TempStudentAssessmentXMLFile=TempStudentAssessment.xml
+FinalStudentAssessmentXMLFile=FinalStudentAssessment.xml
+UIDManualMatchFile=C:/TalendWorkspaces/TEDS-Assessment-Importer/output/TEDS-AI-Manual-UID-yyyyMMddhhmm.xlsx
+ItemsCSV=items.csv
+ItemsDataCSV=itemsdata.csv
+ScoreTypesCSV=scoretypes.csv
+AssessmentsCSV=assessments.csv
+ScoreDataCSV=scoredata.csv
+ObjectivesCSV=objectives.csv
+# mergeXML.pl not used since no items
+MergeCode=mergeXML.pl
+fileEmpty=

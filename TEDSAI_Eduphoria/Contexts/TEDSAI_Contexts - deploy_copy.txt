@@ -1,0 +1,66 @@
+############################################################################################
+#
+#  	File:		TEDSAI_Contexts.txt
+#
+#  	Purpose:	File contains data to load context variables for TEDSAI load process
+#
+#	Revision History
+#	Date		Author			Remarks
+#	20170221	T. Esposito		original version.
+#   	20170331	T. Esposito		new InputType value (AwareDatabase) used to load Eduphoria assessment
+#						data using direct connection to Eduphoria database.
+#       20170411	T. Esposito		added context to hold name of file for Test Ids.
+#	20170419	T. Esposito		input type changed from AwareDatabase to Eduphoria.
+#	20170506	T. Esposito		new root folder for Eduphoria. 
+#						create Eduphoria only section.
+#	20180412	T. Esposito		commented out SchoolYear, SchoolYear context not used with 
+#						Eduphoria -- only use context CollectionYear.
+#
+############################################################################################
+
+# uncomment and use InputFile context variable below for debugging/running one input Eduphoria Aware file or one TestIds file
+InputFile=TestIds.csv
+
+# For Eduphoria, use only in manual runs not using Eduphoria_Controller job.  Controller job populates this context on
+# normal, automated runs.
+#TestId=
+
+#-- only modify for Eduphoria start --
+# Cloud 
+Cloud=Y
+
+# Cloud Database 
+Host=rds-mysql-r10.clxudlkrick4.us-east-2.rds.amazonaws.com
+Port=3306
+Database=rdsmysqlr10
+Username=rdsmasterr10
+Password=rdsmasterr10pw
+
+LEACDN=701620
+#SchoolYear=2017
+#-- only modify for Eduphoria end --
+
+OutputPath=C:/Users/espositot/projects/TEDS-Assessment-Importer/electron/TEDSAI_GUI/TEDSAI/Output/
+InputType=Eduphoria
+StudentXMLFile=XXXXXX_000_2018TSDS_201801010101_InterchangeStudentParentExtension.xml
+CollectionName=TSDS
+CollectionYear=2016
+AssessmentMetadataXMLFile=AssessmentMetadata.xml
+StudentAssessmentXMLFile=StudentAssessment.xml
+StudentAssessmentXMLFileBkUp=StudentAssessment_backup.xml
+TempStudentAssessmentXMLFile=TempStudentAssessment.xml
+FinalStudentAssessmentXMLFile=FinalStudentAssessment.xml
+MasterFile=TEDS-AI-Template-DEV-BENCH.xlsx
+UIDManualMatchFile=TEDS-AI-Manual-UID-yyyyMMddhhmm.xlsx
+DeleteCSVFiles=N
+ItemsCSV=items.csv
+ItemsDataCSV=itemdata.csv
+ScoreTypesCSV=scoretypes.csv
+AssessmentsCSV=assessments.csv
+ScoreDataCSV=scoredata.csv
+ObjectivesCSV=objectives.csv
+StudentStagingCSV=Student_Staging.csv
+MergeCode=mergeXML.pl
+TeksRptCatExcel=TEKS_RPT_CAT.xlsx
+TeksRptCatNoMatchFile=TEKS_RPT_CAT_no_match.txt
+fileEmpty=

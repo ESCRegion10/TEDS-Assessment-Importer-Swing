@@ -1,0 +1,3 @@
+%~d0
+cd %~dp0
+java -Xms256M -Xmx1024M -cp .;../lib/routines.jar;../lib/commons-collections-3.2.2.jar;../lib/commons-lang-2.6.jar;../lib/log4j-1.2.15.jar;../lib/log4j-1.2.16.jar;../lib/dom4j-1.6.1.jar;../lib/external_sort.jar;../lib/advancedPersistentLookupLib-1.0.jar;../lib/jboss-serialization.jar;../lib/talendcsv.jar;../lib/trove.jar;../lib/jtds-1.3.1-patch.jar;../lib/talend_file_enhanced_20070724.jar;../lib/filecopy.jar;../lib/talend_DB_mssqlUtil.jar;convertawarebulk_2_0.jar; tedsai_sat_psat_ap.convertawarebulk_2_0.ConvertAwareBulk --context=Default %* 
