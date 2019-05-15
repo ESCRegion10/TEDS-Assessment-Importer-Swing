@@ -1,17 +1,22 @@
 package teds_ai.views;
 
 import java.awt.EventQueue;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JTabbedPane;
+
 import java.awt.Color;
+
 import javax.swing.border.TitledBorder;
 import javax.swing.UIManager;
 import javax.swing.JRadioButton;
+
 import java.awt.Font;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -21,21 +26,31 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.SwingWorker;
 import javax.swing.border.LineBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+//import javax.swing.event.DocumentEvent;
+//import javax.swing.event.DocumentListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
 import java.awt.ComponentOrientation;
+
 import javax.swing.DropMode;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
 import javax.swing.ImageIcon;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -43,6 +58,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JTextPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerListModel;
+
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 
@@ -50,11 +66,12 @@ public class Main extends JFrame {
 
 	// Components
 	private static final long serialVersionUID = 1L;
+	private JTabbedPane tabbedPane;
 	private JPanel contentPane;
+	private JPanel pnlCollege;
 	private JMenuBar menuBar;
 	private JMenu mnHelp;
 	private JMenuItem mntmAbout;
-	private JPanel pnlCollege;
 	private JMenu mnFile;
 	private JMenuItem mntmExit;
 	private JRadioButton rdbtnSAT;
@@ -63,19 +80,24 @@ public class Main extends JFrame {
 	private JRadioButton rdbtnACT;
 	private JRadioButton rdbtnAP;
 	private JRadioButton rdbtnTSI;
+	private JRadioButton rdbtnCollegeReadiness;
 //	private JPanel pnlBar;  -- was going to be used for blue bar
-	private JTextArea txtrLogOutput;
 	private JButton btnRunButton;
 	private JButton btnChooseInput;
 	private JButton btnChooseXML;
 	private JButton btnChooseDir;
+	private JButton btnChooseDirectorydefault;
+	private JButton btnExitButton;
+	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
+	private final ButtonGroup buttonGroup_2 = new ButtonGroup();
 	private JFileChooser jfcChooseInput;
 	private JFileChooser jfcChooseXML;
 	private JFileChooser jfcChooseDir;
+	private JFileChooser jfcChooseDirectorydefault;
+	private JTextArea txtrLogOutput;
 	private JTextField xmlFile;
 	private JTextField inputFile;
 	private JTextField outputDir;
-	private JButton btnExitButton;
 	private JProgressBar progressBar;
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
@@ -83,36 +105,35 @@ public class Main extends JFrame {
 	private JLabel lblNewLabel_3;
 	private JLabel lblOutputDirectory;
 	private JLabel lblInputFile;
-	private JTabbedPane tabbedPane;
-	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
-	private final ButtonGroup buttonGroup_2 = new ButtonGroup();
+	private JLabel lblChooseAssessmentGrade;
 	final String OS = System.getProperty("os.name").toLowerCase();
 	String selectedInputType;
 	String strinputFile = new String(); 
 	String stroutputDir = new String(); 
 	String strxmlFile = new String();
-	private JRadioButton rdbtnCollegeReadiness;
 	private JSpinner spinSelectSubject;
-	private JLabel lblChooseAssessmentGrade;
+	private JSpinner spinCollectYr;
+	private JSpinner spinSelectGrade;
 	private JTextArea textArea_1;
 	private JLabel label_1;
 	private JButton btnHome;
-	private JLabel lblNewLabel_5;
+	private JLabel lblCDN;
 	private JLabel lblChooseAssessmentTest;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField outputDirDefault;
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
 	private JTextField textField_6;
+	private JTextField txtCDN;
 	private JButton btnTest;
 	private JButton btnView;
 	private JButton button_2;
 	private JButton btnExit_1;
+	private JButton btnSaveButton;
 	private JRadioButton rdbtnAwareButton;
 	private static Main frame;
-	
+		
 	/**
 	 * Launch the application.
 	 */
@@ -452,13 +473,10 @@ public class Main extends JFrame {
 		pnlAware.setBorder(new TitledBorder(null, "Eduphoria Aware Assessment", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		tabbedPane.addTab("Aware", null, pnlAware, "Home for Eduphoria Assessment exam");
 		
-		JTextPane txtSelectGrade = new JTextPane();
-		txtSelectGrade.setBorder(new LineBorder(new Color(0, 0, 0)));
+		JLabel lblSelectGrade = new JLabel("Select Grade Level");
+		lblSelectGrade.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		JLabel lblNewLabel_2 = new JLabel("Select Grade Level");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-		JSpinner spinSelectGrade = new JSpinner();
+		spinSelectGrade = new JSpinner();
 		spinSelectGrade.setBackground(new Color(153, 255, 255));
 		spinSelectGrade.setToolTipText("Select grade level");
 		spinSelectGrade.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -466,9 +484,6 @@ public class Main extends JFrame {
 		
 		JLabel lblSelectSubject = new JLabel("Select Subject");
 		lblSelectSubject.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-		JTextPane txtSelectSubject = new JTextPane();
-		txtSelectSubject.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		spinSelectSubject = new JSpinner();
 		spinSelectSubject.setBackground(new Color(153, 255, 255));
@@ -528,21 +543,15 @@ public class Main extends JFrame {
 										.addGroup(gl_pnlAware.createSequentialGroup()
 											.addGroup(gl_pnlAware.createParallelGroup(Alignment.LEADING)
 												.addGroup(gl_pnlAware.createSequentialGroup()
-													.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+													.addComponent(lblSelectGrade, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
 													.addGap(32))
 												.addGroup(gl_pnlAware.createSequentialGroup()
 													.addComponent(lblSelectSubject, GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
 													.addPreferredGap(ComponentPlacement.RELATED)))
-											.addGroup(gl_pnlAware.createParallelGroup(Alignment.LEADING)
-												.addGroup(gl_pnlAware.createSequentialGroup()
-													.addComponent(txtSelectGrade, GroupLayout.PREFERRED_SIZE, 372, GroupLayout.PREFERRED_SIZE)
-													.addGap(18)
-													.addComponent(spinSelectGrade, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE))
-												.addGroup(gl_pnlAware.createSequentialGroup()
-													.addComponent(txtSelectSubject, GroupLayout.PREFERRED_SIZE, 372, GroupLayout.PREFERRED_SIZE)
-													.addGap(18)
-													.addComponent(spinSelectSubject, GroupLayout.PREFERRED_SIZE, 123, GroupLayout.PREFERRED_SIZE)))
-											.addPreferredGap(ComponentPlacement.RELATED, 88, Short.MAX_VALUE))
+											.addGroup(gl_pnlAware.createParallelGroup(Alignment.LEADING, false)
+												.addComponent(spinSelectSubject)
+												.addComponent(spinSelectGrade, GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))
+											.addPreferredGap(ComponentPlacement.RELATED, 358, Short.MAX_VALUE))
 										.addComponent(lblChooseAssessmentGrade, GroupLayout.DEFAULT_SIZE, 744, Short.MAX_VALUE))
 									.addPreferredGap(ComponentPlacement.RELATED))
 								.addGroup(gl_pnlAware.createSequentialGroup()
@@ -568,34 +577,31 @@ public class Main extends JFrame {
 				.addGroup(gl_pnlAware.createSequentialGroup()
 					.addGap(24)
 					.addComponent(lblChooseAssessmentGrade, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
-					.addGroup(gl_pnlAware.createParallelGroup(Alignment.TRAILING)
+					.addGroup(gl_pnlAware.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_pnlAware.createSequentialGroup()
 							.addGap(26)
-							.addGroup(gl_pnlAware.createParallelGroup(Alignment.TRAILING)
-								.addComponent(txtSelectGrade, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblNewLabel_2, GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)))
-						.addGroup(gl_pnlAware.createSequentialGroup()
+							.addComponent(lblSelectGrade, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
+						.addGroup(Alignment.TRAILING, gl_pnlAware.createSequentialGroup()
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(spinSelectGrade, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 					.addGap(28)
-					.addGroup(gl_pnlAware.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_pnlAware.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_pnlAware.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_pnlAware.createSequentialGroup()
 							.addComponent(lblSelectSubject)
-							.addComponent(txtSelectSubject, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))
+							.addGap(30)
+							.addComponent(lblNewLabel_4))
 						.addComponent(spinSelectSubject, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE))
-					.addGap(20)
-					.addComponent(lblNewLabel_4)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_pnlAware.createParallelGroup(Alignment.BASELINE)
 						.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 208, GroupLayout.PREFERRED_SIZE)
 						.addComponent(textArea_1, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE))
 					.addGap(19)
 					.addGroup(gl_pnlAware.createParallelGroup(Alignment.TRAILING)
-						.addComponent(progressBar_1, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+						.addComponent(progressBar_1, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
 						.addGroup(gl_pnlAware.createParallelGroup(Alignment.BASELINE)
 							.addComponent(btnRun, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(btnExit, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(btnHome, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+							.addComponent(btnHome, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)))
 					.addGap(152))
 		);
@@ -618,6 +624,7 @@ public class Main extends JFrame {
 		rdbtnCollegeReadiness.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		rdbtnAwareButton = new JRadioButton("Aware");
+		rdbtnAwareButton.setEnabled(false);
 		buttonGroup_2.add(rdbtnAwareButton);
 		rdbtnAwareButton.setBackground(Color.WHITE);
 		rdbtnAwareButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -626,41 +633,38 @@ public class Main extends JFrame {
 		rdbtnAwareButton.setVerticalTextPosition(SwingConstants.TOP);
 		rdbtnAwareButton.setVerticalAlignment(SwingConstants.TOP);
 		
-		lblNewLabel_5 = new JLabel("Count District Number (6 digits, no dash)");
-		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblCDN = new JLabel("Count District Number (6 digits, no dash)");
+		lblCDN.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		lblChooseAssessmentTest = new JLabel("Choose Assessment Type to configure");
 		lblChooseAssessmentTest.setForeground(new Color(255, 153, 0));
 		lblChooseAssessmentTest.setFont(new Font("Tahoma", Font.BOLD, 16));
 		
-		textField = new JTextField();
-		textField.setColumns(10);
+		txtCDN = new JTextField();
+		txtCDN.setColumns(6);
 		
 		JLabel lblCollectionYear = new JLabel("Collection Year");
 		lblCollectionYear.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		JSpinner spinner = new JSpinner();
-		spinner.setModel(new SpinnerListModel(new String[] {"2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"}));
-		spinner.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		spinCollectYr = new JSpinner();
+		spinCollectYr.setModel(new SpinnerListModel(new String[] {"2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"}));
+		spinCollectYr.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JLabel lblOutputDirectorydefault = new JLabel("Output Directory (default)");
 		lblOutputDirectorydefault.setHorizontalAlignment(SwingConstants.LEFT);
 		lblOutputDirectorydefault.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		textField_1 = new JTextField();
-		textField_1.setHorizontalAlignment(SwingConstants.LEFT);
-		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		textField_1.setColumns(10);
+		outputDirDefault = new JTextField();
+		outputDirDefault.setHorizontalAlignment(SwingConstants.LEFT);
+		outputDirDefault.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		outputDirDefault.setColumns(10);
 		
-		JButton btnChooseDirectorydefault = new JButton("Choose directory");
-		btnChooseDirectorydefault.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+		btnChooseDirectorydefault = new JButton("Choose directory");
 		btnChooseDirectorydefault.setToolTipText("Enter directory location of XML output files");
 		btnChooseDirectorydefault.setSelected(true);
 		btnChooseDirectorydefault.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnChooseDirectorydefault.setBackground(new Color(51, 153, 255));
+		jfcChooseDirectorydefault = new JFileChooser();
 		
 		JLabel lblNewLabel_6 = new JLabel("Database Host IP");
 		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -701,16 +705,17 @@ public class Main extends JFrame {
 		textField_6.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textField_6.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Save");
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnSaveButton = new JButton("Save");
+		btnSaveButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
 		btnTest = new JButton("Test");
+		btnTest.setEnabled(false);
 		btnTest.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
 		btnView = new JButton("View");
 		btnView.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
-		button_2 = new JButton("");
+		button_2 = new JButton("");  // Home button
 		button_2.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		button_2.setIcon(new ImageIcon(Main.class.getResource("/teds_ai/resources/icon_Home_SkyBlue.png")));
 		
@@ -727,15 +732,15 @@ public class Main extends JFrame {
 							.addGroup(gl_pnlConfig.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_pnlConfig.createSequentialGroup()
 									.addGroup(gl_pnlConfig.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblNewLabel_5)
-										.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lblCDN)
+										.addComponent(txtCDN, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 										.addComponent(lblCollectionYear)
-										.addComponent(spinner, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+										.addComponent(spinCollectYr, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 									.addGap(26)
 									.addComponent(rdbtnCollegeReadiness)
 									.addGap(18))
 								.addGroup(Alignment.TRAILING, gl_pnlConfig.createSequentialGroup()
-									.addComponent(btnNewButton)
+									.addComponent(btnSaveButton)
 									.addGap(38)
 									.addComponent(btnTest)
 									.addGap(34)
@@ -768,7 +773,7 @@ public class Main extends JFrame {
 							.addComponent(lblOutputDirectorydefault, GroupLayout.PREFERRED_SIZE, 169, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(btnChooseDirectorydefault, GroupLayout.PREFERRED_SIZE, 201, GroupLayout.PREFERRED_SIZE))
-						.addComponent(textField_1, 380, 380, 380))
+						.addComponent(outputDirDefault, 380, 380, 380))
 					.addContainerGap(18, Short.MAX_VALUE))
 		);
 		gl_pnlConfig.setVerticalGroup(
@@ -782,11 +787,11 @@ public class Main extends JFrame {
 						.addComponent(rdbtnAwareButton))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_pnlConfig.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel_5)
+						.addComponent(lblCDN)
 						.addComponent(lblNewLabel_6))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_pnlConfig.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtCDN, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_pnlConfig.createParallelGroup(Alignment.LEADING)
@@ -795,7 +800,7 @@ public class Main extends JFrame {
 								.addGroup(gl_pnlConfig.createSequentialGroup()
 									.addComponent(lblCollectionYear)
 									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(spinner, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+									.addComponent(spinCollectYr, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 								.addGroup(gl_pnlConfig.createSequentialGroup()
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(lblDatabaseName, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
@@ -813,14 +818,14 @@ public class Main extends JFrame {
 							.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_pnlConfig.createParallelGroup(Alignment.LEADING)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+						.addComponent(outputDirDefault, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
 						.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
 						.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
 					.addGap(30)
 					.addGroup(gl_pnlConfig.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_pnlConfig.createParallelGroup(Alignment.BASELINE)
 							.addComponent(btnTest)
-							.addComponent(btnNewButton))
+							.addComponent(btnSaveButton))
 						.addComponent(button_2)
 						.addGroup(gl_pnlConfig.createParallelGroup(Alignment.BASELINE)
 							.addComponent(btnExit_1)
@@ -1021,6 +1026,27 @@ public class Main extends JFrame {
 			}
 		});
 		
+		btnChooseDirectorydefault.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				jfcChooseDirectorydefault.setCurrentDirectory(new java.io.File("C:\\TEDSAI_GUI\\resources\\app"));
+				jfcChooseDirectorydefault.setDialogTitle("TEDS-AI");
+				jfcChooseDirectorydefault.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);  // show directories only
+				jfcChooseDirectorydefault.setAcceptAllFileFilterUsed(false);
+				jfcChooseDirectorydefault.setDialogTitle("Choose Output Directory");
+				jfcChooseDirectorydefault.showDialog(btnChooseDirectorydefault, null);
+				try {
+					outputDirDefault.setText(jfcChooseDirectorydefault.getSelectedFile().toString());
+				} catch (NullPointerException npe1) {
+					JOptionPane.showMessageDialog(
+							frame,  
+							"Required field Output Directory is empty", 
+							"TEDS-AI",
+							JOptionPane.ERROR_MESSAGE
+							); 
+				}
+			}
+		});
+		
 		/**
 		 * Aware radio button
 		 */
@@ -1034,6 +1060,57 @@ public class Main extends JFrame {
 				textField_6.setEnabled(rdbtnAwareButton.isSelected());
 			}
 		});
+
+		/**
+		 * district cdn text field event handler - contents check
+		 */
+		
+		txtCDN.addKeyListener(new KeyListener() {
+			public void keyReleased(KeyEvent e) {
+				String regex = "\\d+";				// digits only
+				String strTxt = txtCDN.getText();
+				 if (strTxt.matches(regex) && strTxt.length() < 7) { 
+					  System.out.println("Source: " + strTxt);  
+				 } else {
+					  JOptionPane.showMessageDialog(frame,
+					          "Error: Please enter 6 digit number only", "Error Message",
+					          JOptionPane.ERROR_MESSAGE);
+				 }
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {}   // not used so do nothing
+		
+			@Override
+			public void keyTyped(KeyEvent e) {}		// not used so do nothing
+		});
+		
+		/** 
+		 * collection year spinner event handler
+		 */
+		spinCollectYr.addChangeListener (new ChangeListener() {
+		      public void stateChanged(ChangeEvent e) {
+		          System.out.println("Collection Year: " + spinCollectYr.getValue());
+		        }
+		      });
+		
+		/** 
+		 * grade spinner event handler
+		 */
+		spinSelectGrade.addChangeListener (new ChangeListener() {
+		      public void stateChanged(ChangeEvent e) {
+		    	  System.out.println("Grade: " + spinSelectGrade.getValue());
+		      }
+	    });
+			
+		/** 
+		 * subject spinner event handler
+		 */
+		spinSelectSubject.addChangeListener (new ChangeListener() {
+		      public void stateChanged(ChangeEvent e) {
+		    	  System.out.println("Subject: " + spinSelectSubject.getValue());
+		      }
+		});
 		
 		/**
 		 * menu File->Exit event handler
@@ -1045,6 +1122,36 @@ public class Main extends JFrame {
 					System.exit(ABORT);
 				} 
 			}
+		});
+		
+		/**
+		 * config tab, Exit button event handler
+		 */
+		btnExit_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (JOptionPane.showConfirmDialog(frame, "Do you wish to Exit?", "TEDS-AI",
+						JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+					System.exit(ABORT);
+				} 
+			}
+		});
+		
+		/** 
+		 * home button on config tab event handler
+		 */
+		button_2.addActionListener(new ActionListener() {
+		       public void actionPerformed(ActionEvent e) {
+		    	   tabbedPane.setSelectedIndex(0);
+		       }
+		});
+		
+		/** 
+		 * home button on Aware tab event handler
+		 */
+		btnHome.addActionListener(new ActionListener() {
+		       public void actionPerformed(ActionEvent e) {
+		    	   tabbedPane.setSelectedIndex(0);
+		       }
 		});
 	}
 }
