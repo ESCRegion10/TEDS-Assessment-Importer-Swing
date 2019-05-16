@@ -1,3 +1,17 @@
+/*--------------------------------------------------------------------------------------
+ * 
+ * Class:	Main.java
+ * 
+ * Purpose:	Contains all components and event handlers for TEDS-AI.
+ * 	
+ * History:
+ * Date			Author			Remarks
+ * 20190328		T. Esposito		original version.
+ * 20190516		T. Esposito		added View and Save event handlers on Configuration tab.
+ * 								added input validation on Configuration tab.
+ * 
+ *-------------------------------------------------------------------------------------*/
+
 package teds_ai.views;
 
 import java.awt.EventQueue;
@@ -23,6 +37,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingWorker;
 import javax.swing.border.LineBorder;
@@ -48,8 +63,14 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import javax.swing.ImageIcon;
 import javax.swing.JMenuBar;
@@ -127,7 +148,7 @@ public class Main extends JFrame {
 	private JTextField textField_6;
 	private JTextField txtCDN;
 	private JButton btnTest;
-	private JButton btnView;
+	private JButton btnViewButton;
 	private JButton button_2;
 	private JButton btnExit_1;
 	private JButton btnSaveButton;
@@ -712,8 +733,8 @@ public class Main extends JFrame {
 		btnTest.setEnabled(false);
 		btnTest.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
-		btnView = new JButton("View");
-		btnView.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnViewButton = new JButton("View");
+		btnViewButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
 		button_2 = new JButton("");  // Home button
 		button_2.setFont(new Font("Tahoma", Font.PLAIN, 10));
@@ -766,7 +787,7 @@ public class Main extends JFrame {
 										.addComponent(rdbtnAwareButton)))
 								.addGroup(gl_pnlConfig.createSequentialGroup()
 									.addGap(37)
-									.addComponent(btnView)
+									.addComponent(btnViewButton)
 									.addGap(31)
 									.addComponent(btnExit_1))))
 						.addGroup(gl_pnlConfig.createSequentialGroup()
@@ -829,7 +850,7 @@ public class Main extends JFrame {
 						.addComponent(button_2)
 						.addGroup(gl_pnlConfig.createParallelGroup(Alignment.BASELINE)
 							.addComponent(btnExit_1)
-							.addComponent(btnView)))
+							.addComponent(btnViewButton)))
 					.addContainerGap(263, Short.MAX_VALUE))
 		);
 		pnlConfig.setLayout(gl_pnlConfig);
@@ -1125,7 +1146,7 @@ public class Main extends JFrame {
 		});
 		
 		/**
-		 * config tab, Exit button event handler
+		 * Configuration tab, Exit button event handler
 		 */
 		btnExit_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -1137,7 +1158,7 @@ public class Main extends JFrame {
 		});
 		
 		/** 
-		 * home button on config tab event handler
+		 * Home button on Configuration tab event handler
 		 */
 		button_2.addActionListener(new ActionListener() {
 		       public void actionPerformed(ActionEvent e) {
@@ -1146,7 +1167,70 @@ public class Main extends JFrame {
 		});
 		
 		/** 
-		 * home button on Aware tab event handler
+		 * Save button on Configuration tab event handler
+		 */
+		btnSaveButton.addActionListener(new ActionListener() {
+		       public void actionPerformed(ActionEvent e) {
+		    	Path path = Paths.get("C:/TEDSAI_GUI/resources/app/TEDSAI/Contexts/TEDSAI_Contexts_TEST.txt");
+		   		Charset charset = StandardCharsets.UTF_8;
+
+		   		String content = null;
+		   		
+		   		String replaceTxtCDN = txtCDN.getText();
+		   		String replaceCollectYr = (String) spinCollectYr.getValue();
+		   		String replaceOutputDirDefault = outputDirDefault.getText().replaceAll("\\\\", "/");
+		   		if (replaceTxtCDN.length() != 6) {
+					JOptionPane.showMessageDialog(frame,
+					          "Error: Please enter 6 digit number only", "Error Message",
+					          JOptionPane.ERROR_MESSAGE);
+		   		} else if (replaceOutputDirDefault.length() == 0) {
+		   			JOptionPane.showMessageDialog(frame,
+					          "Error: Please enter output directory", "Error Message",
+					          JOptionPane.ERROR_MESSAGE);
+				} else {
+					try {
+						content = new String(Files.readAllBytes(path), charset);
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+		   		
+					content = content.replaceAll("LEACDN=[ -~]*", "LEACDN=" + replaceTxtCDN);
+					content = content.replaceAll("CollectionYear=[ -~]*", "CollectionYear=" + replaceCollectYr);
+					content = content.replaceAll("OutputPath=[ -~]*", "OutputPath=" + replaceOutputDirDefault);
+					
+					try {
+						Files.write(path, content.getBytes(charset));
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+		       }
+		    }	
+		});
+		
+		/** 
+		 * View button on Configuration tab event handler
+		 */
+		btnViewButton.addActionListener(new ActionListener() {
+	       public void actionPerformed(ActionEvent e) {
+	    	   Path path = Paths.get("C:/TEDSAI_GUI/resources/app/TEDSAI/Contexts/TEDSAI_Contexts_TEST.txt");
+	    	   Charset charset = StandardCharsets.UTF_8;
+	    	   String content = null;
+
+	    	   try {
+	    		   content = new String(Files.readAllBytes(path), charset);
+	    		   JTextArea textArea = new JTextArea(35, 80);
+	    		   textArea.setText(content);
+	    		   textArea.setEditable(false);
+	    		   JScrollPane scrollPane = new JScrollPane(textArea);
+	    		   JOptionPane.showMessageDialog(frame, scrollPane, "Context file", JOptionPane.INFORMATION_MESSAGE); 
+	    	   } catch (IOException e12) {
+	    		   e12.printStackTrace();
+	    	   }		
+		    }	
+		});
+		
+		/** 
+		 * Home button on Aware tab event handler
 		 */
 		btnHome.addActionListener(new ActionListener() {
 		       public void actionPerformed(ActionEvent e) {
