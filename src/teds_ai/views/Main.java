@@ -9,6 +9,10 @@
  * 20190328		T. Esposito		original version.
  * 20190516		T. Esposito		added View and Save event handlers on Configuration tab.
  * 								added input validation on Configuration tab.
+ * 20190617		T. Esposito		adjusted size of JFrame.
+ * 								added Note to bottom of all tab screens.
+ * 								added code to center JFrame on any screen.
+ * 								added message for successful Save of configuration.
  * 
  *-------------------------------------------------------------------------------------*/
 
@@ -171,6 +175,7 @@ public class Main extends JFrame {
 				try {
 					//Main frame = new Main();
 					frame = new Main();
+					frame.setLocationRelativeTo(null);   // center frame
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -203,7 +208,7 @@ public class Main extends JFrame {
 		setBackground(Color.WHITE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/teds_ai/resources/favicon-16x16.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 840, 840);
+		setBounds(100, 100, 840, 860);   // size of JFrame
 		
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -385,11 +390,8 @@ public class Main extends JFrame {
 		gl_pnlCollege.setHorizontalGroup(
 			gl_pnlCollege.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_pnlCollege.createSequentialGroup()
-					.addGroup(gl_pnlCollege.createParallelGroup(Alignment.TRAILING)
-						.addGroup(Alignment.LEADING, gl_pnlCollege.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(txtpnNeedHelpFirst, GroupLayout.DEFAULT_SIZE, 777, Short.MAX_VALUE))
-						.addGroup(Alignment.LEADING, gl_pnlCollege.createSequentialGroup()
+					.addGroup(gl_pnlCollege.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_pnlCollege.createSequentialGroup()
 							.addGroup(gl_pnlCollege.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_pnlCollege.createSequentialGroup()
 									.addGap(10)
@@ -407,7 +409,7 @@ public class Main extends JFrame {
 									.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE))
 								.addGroup(gl_pnlCollege.createSequentialGroup()
 									.addContainerGap()
-									.addComponent(progressBar, GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)))
+									.addComponent(progressBar, GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)))
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_pnlCollege.createParallelGroup(Alignment.TRAILING)
 								.addGroup(gl_pnlCollege.createSequentialGroup()
@@ -421,7 +423,7 @@ public class Main extends JFrame {
 										.addComponent(btnChooseDir, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 										.addComponent(btnChooseXML, GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)))
 								.addComponent(txtrLogOutput, GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)))
-						.addGroup(Alignment.LEADING, gl_pnlCollege.createSequentialGroup()
+						.addGroup(gl_pnlCollege.createSequentialGroup()
 							.addGap(11)
 							.addComponent(rdbtnSAT)
 							.addGap(18)
@@ -434,9 +436,12 @@ public class Main extends JFrame {
 							.addComponent(rdbtnAP)
 							.addGap(18)
 							.addComponent(rdbtnTSI))
-						.addGroup(Alignment.LEADING, gl_pnlCollege.createSequentialGroup()
+						.addGroup(gl_pnlCollege.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(label, GroupLayout.PREFERRED_SIZE, 342, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(label, GroupLayout.PREFERRED_SIZE, 342, GroupLayout.PREFERRED_SIZE))
+						.addGroup(Alignment.TRAILING, gl_pnlCollege.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(txtpnNeedHelpFirst, GroupLayout.DEFAULT_SIZE, 777, Short.MAX_VALUE)))
 					.addContainerGap())
 		);
 		gl_pnlCollege.setVerticalGroup(
@@ -482,9 +487,9 @@ public class Main extends JFrame {
 							.addGap(18)
 							.addComponent(progressBar, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
 						.addComponent(txtrLogOutput, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE))
-					.addGap(13)
-					.addComponent(txtpnNeedHelpFirst, GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
-					.addContainerGap())
+					.addPreferredGap(ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+					.addComponent(txtpnNeedHelpFirst, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
+					.addGap(26))
 		);
 		pnlCollege.setLayout(gl_pnlCollege);
 		
@@ -548,6 +553,9 @@ public class Main extends JFrame {
 		btnHome = new JButton("");
 		btnHome.setIcon(new ImageIcon(Main.class.getResource("/teds_ai/resources/icon_Home_SkyBlue.png")));
 		btnHome.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		
+		JTextPane textPane = new JTextPane();
+		textPane.setText("Need help? First, consult the online docs (use Help on Menu).  If further help is needed, please submit a TIMS ticket to TEA support via your Level 2 ESC or vendor support contact.  Be sure to specify \"TEDS-AI\" in your ticket with subsystem \"studentGPS\".\r\nCopyright 2018-19, TEA and Region 10 ESC, All rights reserved.  Alpha Release 0.5.0 | Region 10 Education Service Center");
 		GroupLayout gl_pnlAware = new GroupLayout(pnlAware);
 		gl_pnlAware.setHorizontalGroup(
 			gl_pnlAware.createParallelGroup(Alignment.LEADING)
@@ -570,7 +578,7 @@ public class Main extends JFrame {
 													.addComponent(lblSelectSubject, GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
 													.addPreferredGap(ComponentPlacement.RELATED)))
 											.addGroup(gl_pnlAware.createParallelGroup(Alignment.LEADING, false)
-												.addComponent(spinSelectSubject)
+												.addComponent(spinSelectSubject, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 												.addComponent(spinSelectGrade, GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))
 											.addPreferredGap(ComponentPlacement.RELATED, 358, Short.MAX_VALUE))
 										.addComponent(lblChooseAssessmentGrade, GroupLayout.DEFAULT_SIZE, 744, Short.MAX_VALUE))
@@ -592,17 +600,21 @@ public class Main extends JFrame {
 											.addGap(18)
 											.addComponent(progressBar_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
 							.addGap(27))))
+				.addGroup(Alignment.TRAILING, gl_pnlAware.createSequentialGroup()
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(textPane, GroupLayout.PREFERRED_SIZE, 777, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
 		);
 		gl_pnlAware.setVerticalGroup(
 			gl_pnlAware.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_pnlAware.createSequentialGroup()
 					.addGap(24)
 					.addComponent(lblChooseAssessmentGrade, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
-					.addGroup(gl_pnlAware.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_pnlAware.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_pnlAware.createSequentialGroup()
 							.addGap(26)
 							.addComponent(lblSelectGrade, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
-						.addGroup(Alignment.TRAILING, gl_pnlAware.createSequentialGroup()
+						.addGroup(gl_pnlAware.createSequentialGroup()
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(spinSelectGrade, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 					.addGap(28)
@@ -618,13 +630,15 @@ public class Main extends JFrame {
 						.addComponent(textArea_1, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE))
 					.addGap(19)
 					.addGroup(gl_pnlAware.createParallelGroup(Alignment.TRAILING)
-						.addComponent(progressBar_1, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+						.addComponent(progressBar_1, GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
 						.addGroup(gl_pnlAware.createParallelGroup(Alignment.BASELINE)
 							.addComponent(btnRun, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(btnExit, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(btnHome, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(btnHome, GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
 							.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)))
-					.addGap(152))
+					.addGap(43)
+					.addComponent(textPane, GroupLayout.PREFERRED_SIZE, 122, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
 		);
 		pnlAware.setLayout(gl_pnlAware);
 		
@@ -742,6 +756,9 @@ public class Main extends JFrame {
 		
 		btnExit_1 = new JButton("Exit");
 		btnExit_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		
+		JTextPane textPane_1 = new JTextPane();
+		textPane_1.setText("Need help? First, consult the online docs (use Help on Menu).  If further help is needed, please submit a TIMS ticket to TEA support via your Level 2 ESC or vendor support contact.  Be sure to specify \"TEDS-AI\" in your ticket with subsystem \"studentGPS\".\r\nCopyright 2018-19, TEA and Region 10 ESC, All rights reserved.  Alpha Release 0.5.0 | Region 10 Education Service Center");
 		GroupLayout gl_pnlConfig = new GroupLayout(pnlConfig);
 		gl_pnlConfig.setHorizontalGroup(
 			gl_pnlConfig.createParallelGroup(Alignment.LEADING)
@@ -750,7 +767,7 @@ public class Main extends JFrame {
 					.addGroup(gl_pnlConfig.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblChooseAssessmentTest, GroupLayout.PREFERRED_SIZE, 744, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_pnlConfig.createSequentialGroup()
-							.addGroup(gl_pnlConfig.createParallelGroup(Alignment.LEADING)
+							.addGroup(gl_pnlConfig.createParallelGroup(Alignment.TRAILING)
 								.addGroup(gl_pnlConfig.createSequentialGroup()
 									.addGroup(gl_pnlConfig.createParallelGroup(Alignment.LEADING)
 										.addComponent(lblCDN)
@@ -760,7 +777,7 @@ public class Main extends JFrame {
 									.addGap(26)
 									.addComponent(rdbtnCollegeReadiness)
 									.addGap(18))
-								.addGroup(Alignment.TRAILING, gl_pnlConfig.createSequentialGroup()
+								.addGroup(gl_pnlConfig.createSequentialGroup()
 									.addComponent(btnSaveButton)
 									.addGap(38)
 									.addComponent(btnTest)
@@ -794,8 +811,9 @@ public class Main extends JFrame {
 							.addComponent(lblOutputDirectorydefault, GroupLayout.PREFERRED_SIZE, 169, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(btnChooseDirectorydefault, GroupLayout.PREFERRED_SIZE, 201, GroupLayout.PREFERRED_SIZE))
-						.addComponent(outputDirDefault, 380, 380, 380))
-					.addContainerGap(18, Short.MAX_VALUE))
+						.addComponent(outputDirDefault, 380, 380, 380)
+						.addComponent(textPane_1, GroupLayout.PREFERRED_SIZE, 777, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_pnlConfig.setVerticalGroup(
 			gl_pnlConfig.createParallelGroup(Alignment.LEADING)
@@ -851,7 +869,9 @@ public class Main extends JFrame {
 						.addGroup(gl_pnlConfig.createParallelGroup(Alignment.BASELINE)
 							.addComponent(btnExit_1)
 							.addComponent(btnViewButton)))
-					.addContainerGap(263, Short.MAX_VALUE))
+					.addGap(35)
+					.addComponent(textPane_1, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(112, Short.MAX_VALUE))
 		);
 		pnlConfig.setLayout(gl_pnlConfig);
 		contentPane.setLayout(gl_contentPane);
@@ -922,9 +942,15 @@ public class Main extends JFrame {
 							progressBar.setStringPainted(true);
 							progressBar.setVisible(true); 
 
-							String cmd = "C:/TEDSAI_GUI/resources/app/TEDSAI/Controller/Controller/Controller_run.bat " + "2018" + " " + '"' + "C:/TEDSAI_GUI/resources/app/TEDSAI/Input/TEDS-AI-Template-Master.xlsx"
-									+ '"' + " "	+ '"' + strinputFile + '"' + " " + selectedInputType + " " + "166903" + " " + '"' + stroutputDir + '/' + '"' + " " + '"' + strxmlFile + '"'; 
+							// need to get CollectionYear and CDN from context file -- now hard-coded
+							
+							//String cmd = "C:/TEDSAI_GUI/resources/app/TEDSAI/Controller/Controller/Controller_run.bat " + "2018" + " " + '"' + "C:/TEDSAI_GUI/resources/app/TEDSAI/Input/TEDS-AI-Template-Master.xlsx"
+							//		+ '"' + " "	+ '"' + strinputFile + '"' + " " + selectedInputType + " " + "166903" + " " + '"' + stroutputDir + '/' + '"' + " " + '"' + strxmlFile + '"'; 
 
+							String cmd = "C:/TEDSAI_GUI/resources/app/TEDSAI/Controller/Controller/Controller_run.bat " + "2018" + " " + '"' + "C:/TEDSAI_GUI/resources/app/TEDSAI/Input/TEDS-AI-Template-Master.xlsx"
+									+ '"' + " "	+ '"' + strinputFile + '"' + " " + selectedInputType + " " + "701603" + " " + '"' + stroutputDir + '/' + '"' + " " + '"' + strxmlFile + '"'; 
+							
+							System.out.println(cmd);
 							Process p = null;
 							try {
 								p = Runtime.getRuntime().exec(cmd);
@@ -952,11 +978,23 @@ public class Main extends JFrame {
 							try {
 								input = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
 							} catch (FileNotFoundException e1) {
+								JOptionPane.showMessageDialog(
+										frame,  
+										"No batchlog file found", 
+										"TEDS-AI",
+										JOptionPane.ERROR_MESSAGE
+										);
 								e1.printStackTrace();
 							}
 							try {
 								txtrLogOutput.read(input, "Reading log file");
 							} catch (IOException e1) {
+								JOptionPane.showMessageDialog(
+										frame,  
+										"Error reading batchlog file", 
+										"TEDS-AI",
+										JOptionPane.ERROR_MESSAGE
+										); 
 								e1.printStackTrace();
 							}    
 						}
@@ -1170,40 +1208,49 @@ public class Main extends JFrame {
 		 * Save button on Configuration tab event handler
 		 */
 		btnSaveButton.addActionListener(new ActionListener() {
-		       public void actionPerformed(ActionEvent e) {
-		    	Path path = Paths.get("C:/TEDSAI_GUI/resources/app/TEDSAI/Contexts/TEDSAI_Contexts_TEST.txt");
+		    public void actionPerformed(ActionEvent e) {
+		    	Path path = Paths.get("C:/TEDSAI_GUI/resources/app/TEDSAI/Contexts/TEDSAI_Contexts.txt");
 		   		Charset charset = StandardCharsets.UTF_8;
-
 		   		String content = null;
 		   		
-		   		String replaceTxtCDN = txtCDN.getText();
-		   		String replaceCollectYr = (String) spinCollectYr.getValue();
-		   		String replaceOutputDirDefault = outputDirDefault.getText().replaceAll("\\\\", "/");
-		   		if (replaceTxtCDN.length() != 6) {
-					JOptionPane.showMessageDialog(frame,
+		   		try {
+		   			String replaceTxtCDN = txtCDN.getText();
+		   			String replaceCollectYr = (String) spinCollectYr.getValue();
+		   			String replaceOutputDirDefault = outputDirDefault.getText().replaceAll("\\\\", "/");
+		   			if (replaceTxtCDN.length() != 6) {
+		   				JOptionPane.showMessageDialog(frame,
 					          "Error: Please enter 6 digit number only", "Error Message",
 					          JOptionPane.ERROR_MESSAGE);
-		   		} else if (replaceOutputDirDefault.length() == 0) {
-		   			JOptionPane.showMessageDialog(frame,
+		   			} else if (replaceOutputDirDefault.length() == 0) {
+		   				JOptionPane.showMessageDialog(frame,
 					          "Error: Please enter output directory", "Error Message",
 					          JOptionPane.ERROR_MESSAGE);
-				} else {
-					try {
-						content = new String(Files.readAllBytes(path), charset);
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
+		   			} else {
+		   				try {
+		   					content = new String(Files.readAllBytes(path), charset);
+		   				} catch (IOException e1) {
+		   					e1.printStackTrace();
+		   				}
 		   		
-					content = content.replaceAll("LEACDN=[ -~]*", "LEACDN=" + replaceTxtCDN);
-					content = content.replaceAll("CollectionYear=[ -~]*", "CollectionYear=" + replaceCollectYr);
-					content = content.replaceAll("OutputPath=[ -~]*", "OutputPath=" + replaceOutputDirDefault);
+		   				content = content.replaceAll("LEACDN=[ -~]*", "LEACDN=" + replaceTxtCDN);
+		   				content = content.replaceAll("CollectionYear=[ -~]*", "CollectionYear=" + replaceCollectYr);
+		   				content = content.replaceAll("OutputPath=[ -~]*", "OutputPath=" + replaceOutputDirDefault + "/");
 					
-					try {
-						Files.write(path, content.getBytes(charset));
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
-		       }
+		   				try {
+		   					Files.write(path, content.getBytes(charset));
+		   				} catch (IOException e1) {
+		   					e1.printStackTrace();
+		   				}
+		   				JOptionPane.showMessageDialog(frame,
+							"Configuration saved.", "TEDS-AI", 
+							JOptionPane.INFORMATION_MESSAGE);
+		            }
+		   	    } catch (Exception allEx) {
+		   	    	JOptionPane.showMessageDialog(frame,
+				          "Error: exception during Save button operation", "Error Message",
+				          JOptionPane.ERROR_MESSAGE);
+		   	    	allEx.printStackTrace();
+		   	    } 
 		    }	
 		});
 		
@@ -1212,18 +1259,21 @@ public class Main extends JFrame {
 		 */
 		btnViewButton.addActionListener(new ActionListener() {
 	       public void actionPerformed(ActionEvent e) {
-	    	   Path path = Paths.get("C:/TEDSAI_GUI/resources/app/TEDSAI/Contexts/TEDSAI_Contexts_TEST.txt");
+	    	   Path path = Paths.get("C:/TEDSAI_GUI/resources/app/TEDSAI/Contexts/TEDSAI_Contexts.txt");
 	    	   Charset charset = StandardCharsets.UTF_8;
+	    	   JTextArea textArea = new JTextArea(35, 80);
+	    	   JScrollPane scrollPane = new JScrollPane(textArea);
 	    	   String content = null;
 
 	    	   try {
 	    		   content = new String(Files.readAllBytes(path), charset);
-	    		   JTextArea textArea = new JTextArea(35, 80);
 	    		   textArea.setText(content);
-	    		   textArea.setEditable(false);
-	    		   JScrollPane scrollPane = new JScrollPane(textArea);
+	    		   textArea.setEditable(false);   // not editable - set to true if want to edit context file
 	    		   JOptionPane.showMessageDialog(frame, scrollPane, "Context file", JOptionPane.INFORMATION_MESSAGE); 
 	    	   } catch (IOException e12) {
+	    		   JOptionPane.showMessageDialog(frame,
+					          "Error: Context file not viewable", "Error Message",
+					          JOptionPane.ERROR_MESSAGE);
 	    		   e12.printStackTrace();
 	    	   }		
 		    }	
