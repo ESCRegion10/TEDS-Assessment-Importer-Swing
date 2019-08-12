@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install4j version="5.1.11" transformSequenceNumber="4">
-  <directoryPresets config="C:/" />
-  <application name="TEDS-AI" distributionSourceDir="" applicationId="7515-8802-3801-9165" mediaDir="C:/TEDS-AI-Swing" mediaFilePattern="${compiler:sys.shortName}-${compiler:sys.version}-${compiler:sys.platform}" compression="9" lzmaCompression="true" pack200Compression="true" excludeSignedFromPacking="true" commonExternalFiles="false" createMd5Sums="true" shrinkRuntime="true" shortName="TEDS-AI" publisher="Region 10 ESC" publisherWeb="https://www.region10.org/" version="0.5.0" allPathsRelative="false" backupOnSave="false" autoSave="false" convertDotsToUnderscores="false" macSignature="????" installerName="" javaMinVersion="1.7" javaMaxVersion="1.9" allowBetaVM="false" jdkMode="runtimeJre" jdkName="">
+  <directoryPresets config="C:/###_TEDS-AI_docs_notes_and_requirements_from_TEA_###/TEDS-AI-DesktopIcons" />
+  <application name="TEDS-AI" distributionSourceDir="" applicationId="7515-8802-3801-9165" mediaDir="C:/TEDS-AI-Swing" mediaFilePattern="${compiler:sys.shortName}-${compiler:sys.version}-${compiler:sys.platform}" compression="9" lzmaCompression="true" pack200Compression="true" excludeSignedFromPacking="true" commonExternalFiles="false" createMd5Sums="true" shrinkRuntime="true" shortName="TEDS-AI" publisher="Region 10 ESC" publisherWeb="https://www.region10.org/" version="1.0.0" allPathsRelative="false" backupOnSave="false" autoSave="false" convertDotsToUnderscores="false" macSignature="????" installerName="" javaMinVersion="1.7" javaMaxVersion="1.8" allowBetaVM="false" jdkMode="runtimeJre" jdkName="">
     <languages skipLanguageSelection="false" languageSelectionInPrincipalLanguage="false">
       <principalLanguage id="en" customLocalizationFile="" />
       <additionalLanguages />
@@ -35,7 +35,7 @@
   </files>
   <launchers>
     <launcher name="TEDS-AI" id="56" customizedId="" external="false" excludeFromMenu="false" unixMode="755" menuName="" icnsFile="" customMacBundleIdentifier="false" macBundleIdentifier="" swtApp="false" fileset="" macBundleBinary="JavaApplicationStub" addMacEntitlements="false" macEntitlementsFile="">
-      <executable name="TEDS-AI" type="1" iconSet="true" iconFile="" executableDir="." redirectStderr="true" stderrFile="error.log" stderrMode="overwrite" redirectStdout="false" stdoutFile="output.log" stdoutMode="overwrite" failOnStderrOutput="true" executableMode="1" changeWorkingDirectory="true" workingDirectory="." singleInstance="false" serviceStartType="2" serviceDependencies="" serviceDescription="" jreLocation="" executionLevel="asInvoker" checkConsoleParameter="false" globalSingleInstance="false">
+      <executable name="TEDS-AI" type="1" iconSet="true" iconFile="C:/###_TEDS-AI_docs_notes_and_requirements_from_TEA_###/TEDS-AI-DesktopIcons/favicon.ico" executableDir="." redirectStderr="true" stderrFile="error.log" stderrMode="overwrite" redirectStdout="false" stdoutFile="output.log" stdoutMode="overwrite" failOnStderrOutput="true" executableMode="1" changeWorkingDirectory="true" workingDirectory="." singleInstance="false" serviceStartType="2" serviceDependencies="" serviceDescription="" jreLocation="" executionLevel="asInvoker" checkConsoleParameter="false" globalSingleInstance="false">
         <versionInfo include="true" fileVersion="" fileDescription="${compiler:sys.fullName}" legalCopyright="Copyright © 2019 Texas Education Agency" internalName="${compiler:sys.shortName}" productName="" />
       </executable>
       <splashScreen show="true" autoOff="true" alwaysOnTop="true" width="0" height="0" bitmapFile="C:/###_TEDS-AI_docs_notes_and_requirements_from_TEA_###/favicon-16x16.png" java6SplashScreen="false">
@@ -63,7 +63,7 @@
         <content />
       </infoPlist>
       <iconImageFiles>
-        <file path="C:/###_TEDS-AI_docs_notes_and_requirements_from_TEA_###/favicon-16x16.png" />
+        <file path="C:/###_TEDS-AI_docs_notes_and_requirements_from_TEA_###/TEDS-AI-DesktopIcons/favicon-32x32.png" />
       </iconImageFiles>
     </launcher>
   </launchers>
@@ -271,8 +271,41 @@
             <validation />
             <preActivation />
             <postActivation />
-            <actions />
-            <formComponents />
+            <actions>
+              <action name="" id="102" customizedId="" beanClass="com.install4j.runtime.beans.actions.finish.ExecuteLauncherAction" enabled="true" commentSet="false" comment="" actionElevationType="none" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.actions.finish.ExecuteLauncherAction">
+                      <void property="launcherId">
+                        <string>56</string>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <condition>context.getBooleanVariable("executeLauncherAction") &amp;&amp; (!context.isUnattended())</condition>
+              </action>
+            </actions>
+            <formComponents>
+              <formComponent name="Execute launcher" id="103" customizedId="" beanClass="com.install4j.runtime.beans.formcomponents.CheckboxComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.CheckboxComponent">
+                      <void property="checkboxText">
+                        <string>${i18n:RunEntryExec("${compiler:sys.fullName}")}</string>
+                      </void>
+                      <void property="initiallySelected">
+                        <boolean>true</boolean>
+                      </void>
+                      <void property="variableName">
+                        <string>executeLauncherAction</string>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+                <visibilityScript />
+              </formComponent>
+            </formComponents>
           </screen>
         </screens>
       </application>
@@ -383,7 +416,7 @@
     </applications>
   </installerGui>
   <mediaSets>
-    <windows name="Windows" id="58" customizedId="" mediaFileName="" installDir="TEDS-AI" overridePrincipalLanguage="false" jreBitType="64" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" includedJRE="" manualJREEntry="false" bundleType="1" jreURL="" jreShared="false" directDownload="false" installOnlyIfNecessary="false" customInstallBaseDir="C:\" contentFilesType="1" downloadURL="" verifyIntegrity="true">
+    <windows name="Windows" id="58" customizedId="" mediaFileName="" installDir="TEDS-AI" overridePrincipalLanguage="false" jreBitType="64" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" includedJRE="windows-amd64-1.8.0_192" manualJREEntry="false" bundleType="1" jreURL="" jreShared="false" directDownload="false" installOnlyIfNecessary="false" customInstallBaseDir="C:\" contentFilesType="1" downloadURL="" verifyIntegrity="true">
       <excludedLaunchers />
       <excludedBeans />
       <overriddenPrincipalLanguage id="en" customLocalizationFile="" />
