@@ -5,12 +5,10 @@
     <target name="create_run_jar">
         <jar destfile="C:/TEDSAI_GUI_works_20190526/TEDS-AI.jar">
             <manifest>
-                <attribute name="Main-Class" value="teds_ai.views.Main"/>
+                <attribute name="Main-Class" value="teds_ai.views.TedsAI"/>
                 <attribute name="Class-Path" value=". TEDS-AI_lib/dom4j-1.6.jar TEDS-AI_lib/log4j-1.2.14.jar TEDS-AI_lib/miglayout15-swing.jar TEDS-AI_lib/mysql-connector-java-8.0.11.jar TEDS-AI_lib/org.apache.logging.log4j-1.2.14.jar TEDS-AI_lib/protobuf-java-2.6.0.jar TEDS-AI_lib/poi-4.1.0.jar TEDS-AI_lib/poi-excelant-4.1.0.jar TEDS-AI_lib/poi-ooxml-4.1.0.jar TEDS-AI_lib/poi-ooxml-schemas-4.1.0.jar TEDS-AI_lib/poi-scratchpad-4.1.0.jar TEDS-AI_lib/commons-compress-1.18.jar TEDS-AI_lib/commons-codec-1.12.jar TEDS-AI_lib/commons-collections4-4.3.jar TEDS-AI_lib/xmlbeans-3.1.0.jar TEDS-AI_lib/commons-logging-1.2.jar TEDS-AI_lib/jaxb-api-2.3.0.jar TEDS-AI_lib/jaxb-core-2.3.0.1.jar TEDS-AI_lib/jaxb-impl-2.3.0.1.jar TEDS-AI_lib/commons-math3-3.6.1.jar TEDS-AI_lib/activation-1.1.1.jar TEDS-AI_lib/curvesapi-1.06.jar TEDS-AI_lib/commons-io-2.6.jar TEDS-AI_lib/acrobat-1.1.jar TEDS-AI_lib/mrjtoolkitstubs-1.0.jar"/>
             </manifest>
             <fileset dir="C:/workspace/luna-java-gui/TEDS-AI/bin"/>
-            <fileset dir="C:/workspace/luna-java-gui/TEDS-AI/log4j"/>
-            <fileset dir="C:/workspace/luna-java-gui/TEDS-AI/TEDS-AI_lib"/>
         </jar>
         <delete dir="C:/TEDSAI_GUI_works_20190526/TEDS-AI_lib"/>
         <mkdir dir="C:/TEDSAI_GUI_works_20190526/TEDS-AI_lib"/>
