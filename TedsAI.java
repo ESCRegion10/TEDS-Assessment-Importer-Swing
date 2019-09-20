@@ -2,7 +2,7 @@
  * 
  * Class:		TedsAI.java
  * 
- * Purpose:		Contains all components and event handlers for TEDS-AI.
+ * Purpose:		Contains all components and event handlers for TEDS-AI UI.
  * 	
  * History:
  * Date			Author			Remarks
@@ -43,6 +43,16 @@
  * 								when viewing a log file.
  * 20190805		T. Esposito		corrected bug with file choosers - would generate error message if no file/directory chosen even
  * 								when field was populated.
+ * 20190820		T. Esposito		when log4j DEBUG enabled, all exception stack traces are sent to log file.  Otherwise, no stack
+ * 								traces appear in logs.
+ * 20190822		T. Esposito		the menu item Help->Documentation downloads the TEDS-AI User Guide to the folder
+ * 								<current_directory>\Docs as the file TEDS_Assessment_Importer_Tool.docx.
+ * 20190823		T. Esposito		//TODO:
+ * 								Refactor code to use multiple classes instead of one class for better code maintainability.
+ * 								Add warning message if application version is out-of-date.
+ * 								Add scheduler functionality to schedule jobs to run via the Task Scheduler.
+ * 								Add ability to process multiple College Readiness files at one time.		
+ *								Add flexibility to process multiple combinations of Grade-Subject level tests at one time.
  * 
  *-------------------------------------------------------------------------------------------------------------------------*/
 
@@ -50,10 +60,13 @@ package teds_ai.views;
 
 import java.awt.BorderLayout;
 import java.io.FileInputStream;
+
 import com.adobe.acrobat.Viewer;
+
 import java.awt.Desktop;
 import java.awt.EventQueue;
 import java.awt.Image;
+
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -61,11 +74,15 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JTabbedPane;
+
 import java.awt.Color;
+
 import javax.swing.border.TitledBorder;
 import javax.swing.UIManager;
 import javax.swing.JRadioButton;
+
 import java.awt.Font;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -81,11 +98,14 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+
 import java.awt.ComponentOrientation;
+
 import javax.swing.DropMode;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -94,12 +114,20 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.io.Writer;
+import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -111,6 +139,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+
 import javax.swing.ImageIcon;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -118,14 +147,21 @@ import javax.swing.JMenuItem;
 import javax.swing.JTextPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerListModel;
+
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
+
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+
 import java.awt.Cursor;
+
 import javax.swing.border.CompoundBorder;
 import javax.swing.JTable;
+
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -280,9 +316,9 @@ public class TedsAI extends JFrame {
 		
 		 try {
              adjustLAF();
-         } catch (Exception e) {
-        	 logger.error("Exception during adjustment of Look-And-Feel : " + e.getMessage());
-             e.printStackTrace();
+         } catch (Exception e1) {
+        	 logger.error("Exception during adjustment of Look-And-Feel : " + e1.getMessage());
+        	 logStackTrace(e1);
          }
 		 
 		EventQueue.invokeLater(new Runnable() {
@@ -291,8 +327,9 @@ public class TedsAI extends JFrame {
 					frame = new TedsAI();
 					frame.setLocationRelativeTo(null);   // center frame
 					frame.setVisible(true);
-				} catch (Exception e) {
-					logger.error("Exception during creation of JFrame : " + e.getMessage());
+				} catch (Exception e1) {
+					logger.error("Exception during creation of JFrame : " + e1.getMessage());
+					logStackTrace(e1);
 				}
 					
 				// TODO: To be done by TEA - add warning message if application version is out-of-date.
@@ -308,6 +345,18 @@ public class TedsAI extends JFrame {
 				*/
 			}
 		});
+	}
+	
+	/**
+	 * 
+	 * Log exceptions to log file
+	 * 
+	 */
+	private static void logStackTrace(Exception ex) {
+		Writer writer = new StringWriter();
+		ex.printStackTrace(new PrintWriter(writer));
+		String s = writer.toString();
+		logger.debug("Stack trace : " + s);
 	}
 	
 	/**
@@ -328,8 +377,9 @@ public class TedsAI extends JFrame {
             UIManager.put("Menu.selectionForeground", new Color(0, 131, 204));
             UIManager.put("MenuBar.selectionBackground", Color.white);
             UIManager.put("MenuBar.selectionForeground", new Color(0, 131, 204));
-        } catch (Exception e) {
-            logger.error("Exception during adjustment of Look-And-Feel : " + e.getMessage());
+        } catch (Exception e1) {
+            logger.error("Exception during adjustment of Look-And-Feel : " + e1.getMessage());
+            logStackTrace(e1);
         }
 	}
 
@@ -342,7 +392,7 @@ public class TedsAI extends JFrame {
 	 */
 	public TedsAI() {
 		
-		logger.debug("Current working directory is: " +currentDir);
+		logger.debug("Current working directory is: " + currentDir);
 		setTitle("TEDS-AI");
 		initComponents();
 		createEvents();
@@ -374,6 +424,7 @@ public class TedsAI extends JFrame {
 	   	} catch (IOException e1) {
 	   		e1.printStackTrace();
 	   		logger.error("Exception during reading of Collection Year : " + e1.getMessage());
+	   	    logStackTrace(e1);
 	   	}
 	   	
 	   	content = content.replaceAll("CollectionYear=[ -~]*", "CollectionYear=" + collectionYear);
@@ -385,6 +436,7 @@ public class TedsAI extends JFrame {
 		          "Exception during save of Collection Year", "Error Message",
 		          JOptionPane.ERROR_MESSAGE);
 	   	    logger.error("Exception during saving of Collection Year : " + e1.getMessage());
+	   	    logStackTrace(e1);
 	   	}
     }	
 	
@@ -413,6 +465,7 @@ public class TedsAI extends JFrame {
 	   		content = new String(Files.readAllBytes(path), charset);
 	   	} catch (IOException e1) {
 	   		logger.error("Exception during reading of Student Parent XML file name : " + e1.getMessage());
+	   		logStackTrace(e1);
 	   	}
 	   	
 	   	content = content.replaceAll("StudentXMLFile=[ -~]*", "StudentXMLFile=" + replaceStuParXML);
@@ -424,6 +477,7 @@ public class TedsAI extends JFrame {
 		          "Exception during save of Student Parent XML file", "Error Message",
 		          JOptionPane.ERROR_MESSAGE);
 	   	   	logger.error("Exception during saving of Student Parent XML file name : " + e1.getMessage());
+	   	   	logStackTrace(e1);
 	   	}
     }	
 	
@@ -449,6 +503,7 @@ public class TedsAI extends JFrame {
 				JOptionPane.ERROR_MESSAGE
 				);
 			logger.error("IOException Aware context file not found while populating Student Parent XML file : " + e1.getMessage());
+			logStackTrace(e1);
 		}
 		
 		// populate field with Output Directory from context file   
@@ -487,6 +542,7 @@ public class TedsAI extends JFrame {
 				JOptionPane.ERROR_MESSAGE
 				);
 			logger.error("IOException Aware context file not found while populating Output path : " + e1.getMessage());
+			logStackTrace(e1);
 		}
 		
 		// populate field with Output Directory from context file   
@@ -507,14 +563,15 @@ public class TedsAI extends JFrame {
 		        	Path path = Paths.get(line.substring(11,line.length()-1));
 		        	try {
 						Files.createDirectories(path);
-					} catch (IOException e) {
+					} catch (IOException e1) {
 						JOptionPane.showMessageDialog(
 							frame,  
 							"Required Output Directory defined in context file cannot be created.", 
 							"TEDS-AI",
 							JOptionPane.ERROR_MESSAGE
 						); 
-						logger.error("Required Output Directory defined in context file cannot be created : " + e.getMessage());
+						logger.error("Required Output Directory defined in context file cannot be created : " + e1.getMessage());
+						logStackTrace(e1);
 					}
 		        }
 		        
@@ -540,6 +597,7 @@ public class TedsAI extends JFrame {
 					JOptionPane.ERROR_MESSAGE
 					);
 			logger.error("IOException College Readiness context file not found : " + e1.getMessage());
+			logStackTrace(e1);
 		}
 		
 		for (String line : lines) {
@@ -576,6 +634,7 @@ public class TedsAI extends JFrame {
 					JOptionPane.ERROR_MESSAGE
 					);
 			logger.error("IOException Aware context file not found while getting database contexts : " + e1.getMessage());
+			logStackTrace(e1);
 		}
 		
 		for (String line : lines) {
@@ -628,8 +687,9 @@ public class TedsAI extends JFrame {
 		Image image = null;
 		try {
 			image = ImageIO.read(this.getClass().getResource("/teds_ai/resources/favicon-96x96.png"));
-		} catch (IOException e2) {
-			logger.error("Exception during reading of UI icon : " + e2.getMessage());
+		} catch (IOException e1) {
+			logger.error("Exception during reading of UI icon : " + e1.getMessage());
+			logStackTrace(e1);
 		}
 		setIconImage(image);
 		
@@ -848,20 +908,19 @@ public class TedsAI extends JFrame {
 		btnChooseXML.setContentAreaFilled(false);
 		btnChooseXML.setFocusPainted(false);
 		btnChooseXML.setBorderPainted(false);
-		btnChooseXML.setIgnoreRepaint(true);
 		btnChooseXML.setSelected(true);
 		btnChooseXML.setOpaque(false);
-		btnChooseXML.setSelectedIcon(new ImageIcon(TedsAI.class.getResource("/teds_ai/resources/CVTbutton_Browse.png")));
-		btnChooseXML.setIcon(new ImageIcon("C:\\###_TEDS-AI_source_code_from_TEA_###\\ConverterValidatorTool\\src\\main\\resources\\image\\CVTbutton_Browse.png"));
+		btnChooseXML.setIcon(new ImageIcon(TedsAI.class.getResource("/teds_ai/resources/CVTbutton_Browse.png")));
 		btnChooseXML.setForeground(new Color(255, 255, 255));
 		btnChooseXML.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		btnChooseXML.setToolTipText("Get Student Parent XML file");
 		btnChooseXML.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnChooseXML.setBorder(null);
-		btnChooseXML.setBackground(new Color(30, 144, 255));
+		btnChooseXML.setBackground(Color.WHITE);
 		jfcChooseXML = new JFileChooser();
 				
 		btnChooseInput = new JButton("");
+		btnChooseInput.setBorderPainted(false);
 		btnChooseInput.setContentAreaFilled(false);
 		btnChooseInput.setOpaque(false);
 		btnChooseInput.setFocusPainted(false);
@@ -872,7 +931,7 @@ public class TedsAI extends JFrame {
 		btnChooseInput.setToolTipText("Get input assessment file to process");
 		btnChooseInput.setSelected(true);
 		btnChooseInput.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnChooseInput.setBackground(new Color(51, 153, 255));
+		btnChooseInput.setBackground(Color.WHITE);
 		jfcChooseInput = new JFileChooser();
 		
 		lblAssessment = new JLabel("Choose Assessment Type to Process");
@@ -948,8 +1007,8 @@ public class TedsAI extends JFrame {
 									.addGroup(gl_pnlCollege.createParallelGroup(Alignment.TRAILING, false)
 										.addComponent(xmlFile, GroupLayout.PREFERRED_SIZE, 425, GroupLayout.PREFERRED_SIZE)
 										.addComponent(inputFile, GroupLayout.PREFERRED_SIZE, 425, GroupLayout.PREFERRED_SIZE))
-									.addGap(18)
-									.addGroup(gl_pnlCollege.createParallelGroup(Alignment.LEADING, false)
+									.addGap(28)
+									.addGroup(gl_pnlCollege.createParallelGroup(Alignment.TRAILING)
 										.addComponent(btnChooseInput, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE)
 										.addComponent(btnChooseXML, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE)))
 								.addComponent(outputDir, GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
@@ -968,38 +1027,36 @@ public class TedsAI extends JFrame {
 		gl_pnlCollege.setVerticalGroup(
 			gl_pnlCollege.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_pnlCollege.createSequentialGroup()
-					.addGroup(gl_pnlCollege.createParallelGroup(Alignment.LEADING)
+					.addGap(27)
+					.addComponent(lblAssessment, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addGroup(gl_pnlCollege.createParallelGroup(Alignment.BASELINE)
+						.addComponent(rdbtnPSAT10)
+						.addComponent(rdbtnSAT)
+						.addComponent(rdbtnTSI)
+						.addComponent(rdbtnAP)
+						.addComponent(rdbtnACT)
+						.addComponent(rdbtnPSAT89))
+					.addGap(18)
+					.addGroup(gl_pnlCollege.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_pnlCollege.createParallelGroup(Alignment.BASELINE)
+							.addComponent(xmlFile, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblXMLFile, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+						.addComponent(btnChooseXML, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
+					.addGap(7)
+					.addGroup(gl_pnlCollege.createParallelGroup(Alignment.TRAILING, false)
 						.addGroup(gl_pnlCollege.createSequentialGroup()
-							.addGap(27)
-							.addComponent(lblAssessment, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
 							.addGroup(gl_pnlCollege.createParallelGroup(Alignment.BASELINE)
-								.addComponent(rdbtnPSAT10)
-								.addComponent(rdbtnSAT)
-								.addComponent(rdbtnTSI)
-								.addComponent(rdbtnAP)
-								.addComponent(rdbtnACT)
-								.addComponent(rdbtnPSAT89))
-							.addGap(26)
-							.addGroup(gl_pnlCollege.createParallelGroup(Alignment.TRAILING)
-								.addGroup(gl_pnlCollege.createSequentialGroup()
-									.addGroup(gl_pnlCollege.createParallelGroup(Alignment.BASELINE)
-										.addComponent(lblInputFile, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-										.addComponent(inputFile, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(btnChooseInput, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
-									.addGap(49))
-								.addGroup(gl_pnlCollege.createSequentialGroup()
-									.addGroup(gl_pnlCollege.createParallelGroup(Alignment.BASELINE)
-										.addComponent(xmlFile, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(lblXMLFile, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
-									.addGap(38)
-									.addGroup(gl_pnlCollege.createParallelGroup(Alignment.BASELINE)
-										.addComponent(lblOutputDirectory, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-										.addComponent(outputDir, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-									.addGap(18))))
+								.addComponent(lblInputFile, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+								.addComponent(inputFile, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addGap(49))
 						.addGroup(gl_pnlCollege.createSequentialGroup()
-							.addGap(108)
-							.addComponent(btnChooseXML, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(btnChooseInput, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addGroup(gl_pnlCollege.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblOutputDirectory, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+								.addComponent(outputDir, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addGap(18)))
 					.addGroup(gl_pnlCollege.createParallelGroup(Alignment.LEADING, false)
 						.addGroup(gl_pnlCollege.createSequentialGroup()
 							.addPreferredGap(ComponentPlacement.RELATED)
@@ -1212,12 +1269,12 @@ public class TedsAI extends JFrame {
 				.addGroup(gl_pnlAware.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(txtpnNeedHelpFirst_1, GroupLayout.PREFERRED_SIZE, 777, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(100, Short.MAX_VALUE))
+					.addContainerGap(120, Short.MAX_VALUE))
 				.addGroup(gl_pnlAware.createSequentialGroup()
 					.addGroup(gl_pnlAware.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_pnlAware.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(lblChooseAssessmentGrade, GroupLayout.DEFAULT_SIZE, 822, Short.MAX_VALUE))
+							.addComponent(lblChooseAssessmentGrade, GroupLayout.DEFAULT_SIZE, 842, Short.MAX_VALUE))
 						.addGroup(gl_pnlAware.createSequentialGroup()
 							.addGap(22)
 							.addGroup(gl_pnlAware.createParallelGroup(Alignment.LEADING, false)
@@ -1241,18 +1298,17 @@ public class TedsAI extends JFrame {
 													.addComponent(cmbSubjectBox, GroupLayout.PREFERRED_SIZE, 151, GroupLayout.PREFERRED_SIZE))))
 										.addComponent(lblStatusAware, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
 										.addComponent(progressBarTests, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-										.addGroup(gl_pnlAware.createParallelGroup(Alignment.LEADING)
+										.addGroup(gl_pnlAware.createSequentialGroup()
+											.addComponent(btnClearOutputAware, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
+											.addGap(52)
+											.addComponent(btnClearScreen, 0, 0, Short.MAX_VALUE))
+										.addGroup(gl_pnlAware.createParallelGroup(Alignment.LEADING, false)
 											.addGroup(gl_pnlAware.createSequentialGroup()
-												.addComponent(btnClearOutputAware, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
-												.addGap(52)
-												.addComponent(btnClearScreen, 0, 0, Short.MAX_VALUE))
-											.addGroup(gl_pnlAware.createParallelGroup(Alignment.TRAILING, false)
-												.addGroup(Alignment.LEADING, gl_pnlAware.createSequentialGroup()
-													.addPreferredGap(ComponentPlacement.RELATED)
-													.addComponent(btnRunAware, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE)
-													.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-													.addComponent(btnExitAware, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE))
-												.addComponent(progressBarAware, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 278, GroupLayout.PREFERRED_SIZE))))
+												.addPreferredGap(ComponentPlacement.RELATED)
+												.addComponent(btnRunAware, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE)
+												.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+												.addComponent(btnExitAware, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE))
+											.addComponent(progressBarAware, GroupLayout.PREFERRED_SIZE, 278, GroupLayout.PREFERRED_SIZE)))
 									.addGap(29)
 									.addGroup(gl_pnlAware.createParallelGroup(Alignment.TRAILING, false)
 										.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 405, GroupLayout.PREFERRED_SIZE)
@@ -1267,7 +1323,7 @@ public class TedsAI extends JFrame {
 									.addGroup(gl_pnlAware.createParallelGroup(Alignment.LEADING, false)
 										.addGroup(gl_pnlAware.createSequentialGroup()
 											.addComponent(xmlFileAware, GroupLayout.PREFERRED_SIZE, 419, GroupLayout.PREFERRED_SIZE)
-											.addPreferredGap(ComponentPlacement.UNRELATED)
+											.addGap(18)
 											.addComponent(btnChooseXMLAware, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE))
 										.addComponent(outputDirAware, GroupLayout.PREFERRED_SIZE, 566, GroupLayout.PREFERRED_SIZE))))
 							.addGap(70)))
@@ -1690,14 +1746,15 @@ public class TedsAI extends JFrame {
 					} else {
 						throw new NullPointerException();
 					}
-				} catch (NullPointerException npe2) {
-					logger.error("No test type selected : " + npe2.getMessage());
+				} catch (NullPointerException e1) {
 					JOptionPane.showMessageDialog(
 							frame,  
 							"Required button for Assessment Test not selected", 
 							"TEDS-AI",
 							JOptionPane.ERROR_MESSAGE
 							);
+					logger.error("No test type selected : " + e1.getMessage());
+					logStackTrace(e1);
 				} 
 
 				if (JOptionPane.showConfirmDialog(frame, "<html><font color='red'>NOTE: Configurations must be saved prior to processing.</font></html>\nDo you wish to process this file?", "TEDS-AI",
@@ -1745,13 +1802,15 @@ public class TedsAI extends JFrame {
 							Process p = null;
 							try {
 								p = Runtime.getRuntime().exec(cmd);
-							} catch (IOException ex) {
-								logger.error("IOException with SwingWorker process : " + ex.getMessage());
+							} catch (IOException e1) {
+								logger.error("IOException with SwingWorker process : " + e1.getMessage());
+								logStackTrace(e1);
 							} 
 							try {
 								p.waitFor();
-							} catch (InterruptedException ite) {
-								logger.error("InterruptedException with SwingWorker process : " + ite.getMessage());
+							} catch (InterruptedException e1) {
+								logger.error("InterruptedException with SwingWorker process : " + e1.getMessage());
+								logStackTrace(e1);
 							}
 							logger.info("Processing completed");
 					
@@ -1778,6 +1837,7 @@ public class TedsAI extends JFrame {
 										JOptionPane.ERROR_MESSAGE
 										);
 								logger.error("FileNotFoundException when reading Talend batch log file : " + e1.getMessage());
+								logStackTrace(e1);
 							}
 							
 							String line = null;
@@ -1786,20 +1846,19 @@ public class TedsAI extends JFrame {
 									if (line.contains("For input ")) {
 									   continue;
 									} else {
-									  // txtLogOutput.read(line, "Reading log file");
-									//	txtLogOutput.setText(line);
 										line = line.replace("/", "\\");
 										txtLogOutput.append("\n" + line);
 									}
                                 }
-							} catch (IOException ioe) {
+							} catch (IOException e1) {
 								JOptionPane.showMessageDialog(
 										frame,  
 										"Error reading batchlog file", 
 										"TEDS-AI",
 										JOptionPane.ERROR_MESSAGE
 										); 
-								logger.error("IOException with SwingWorker process : " + ioe.getMessage());
+								logger.error("IOException with SwingWorker process : " + e1.getMessage());
+								logStackTrace(e1);
 							}   
 						}
 					}
@@ -1844,14 +1903,14 @@ public class TedsAI extends JFrame {
 				if (xmlFile.getText().length() == 0) {
 					try {
 						xmlFile.setText(jfcChooseXML.getSelectedFile().toString());
-					} catch (NullPointerException npe1) {
+					} catch (NullPointerException e1) {
 						JOptionPane.showMessageDialog(
 							frame,  
 							"Required field Student Parent XML File is empty", 
 							"TEDS-AI",
 							JOptionPane.ERROR_MESSAGE
 							); 
-						logger.info("NullPointerException Student Parent XML File in Home not chosen : " + npe1.getMessage());
+						logger.info("NullPointerException Student Parent XML File in Home not chosen : " + e1.getMessage());
 					}
 				} else {
 					try {
@@ -1877,14 +1936,14 @@ public class TedsAI extends JFrame {
 				jfcChooseInput.showDialog(btnChooseInput, null);
 				try {
 					inputFile.setText(jfcChooseInput.getSelectedFile().toString());
-				} catch (NullPointerException npe1) {
+				} catch (NullPointerException e1) {
 					JOptionPane.showMessageDialog(
 							frame,  
 							"Required field Input File is empty", 
 							"TEDS-AI",
 							JOptionPane.ERROR_MESSAGE
 							); 
-					logger.info("NullPointerException Input File not chosen : " + npe1.getMessage());
+					logger.info("NullPointerException Input File not chosen : " + e1.getMessage());
 				}
 			}
 		});
@@ -1899,14 +1958,14 @@ public class TedsAI extends JFrame {
 				if (outputDirDefault.getText().length() == 0) {
 					try {
 						outputDirDefault.setText(jfcChooseDirectorydefault.getSelectedFile().toString());
-					} catch (NullPointerException npe1) {
+					} catch (NullPointerException e1) {
 						JOptionPane.showMessageDialog(
 							frame,  
 							"Required field Output Directory is empty", 
 							"TEDS-AI",
 							JOptionPane.ERROR_MESSAGE
 							); 
-						logger.info("NullPointerException Default Output Directory not chosen", npe1);
+						logger.info("NullPointerException Default Output Directory not chosen", e1);
 					}
 				} else {
 					try {
@@ -1971,8 +2030,9 @@ public class TedsAI extends JFrame {
 					try {
 						file.delete();
 						file.createNewFile();
-					} catch (IOException e2) {
-						logger.error("Exception during re-creation of TestIds.csv file : " + e2.getMessage());
+					} catch (IOException e1) {
+						logger.error("Exception during re-creation of TestIds.csv file : " + e1.getMessage());
+						logStackTrace(e1);
 					}
 
 					try {
@@ -1980,6 +2040,7 @@ public class TedsAI extends JFrame {
 						bw = new BufferedWriter(fw);
 					} catch (IOException e1) {
 						logger.error("Exception during write to TestIds.csv file : " + e1.getMessage());
+						logStackTrace(e1);
 					}
 		
 					// loop thru table to get chosen tests
@@ -1998,8 +2059,9 @@ public class TedsAI extends JFrame {
 					// close TestIds.csv file
 					try {
 						bw.close();
-					} catch (IOException e) {
-						logger.error("Exception during close to TestIds.csv file : " + e.getMessage());
+					} catch (IOException e1) {
+						logger.error("Exception during close to TestIds.csv file : " + e1.getMessage());
+						logStackTrace(e1);
 					}
 				
 					if (!file.exists() || file.length() == 0) {
@@ -2024,6 +2086,7 @@ public class TedsAI extends JFrame {
 							JOptionPane.ERROR_MESSAGE
 							);
 						logger.error("IOException Aware context file not found : " + e1.getMessage());
+						logStackTrace(e1);
 					}
 				
 					for (String line : lines) {
@@ -2091,7 +2154,7 @@ public class TedsAI extends JFrame {
 
 							logger.info("Processing started");
 					
-							//for Eduphoria, the HomeDir has to be set to currentDir + "/TEDSAI_Eduphoria"
+							// for Eduphoria, the HomeDir has to be set to currentDir + "/TEDSAI_Eduphoria"
 							String cmd = currentDir + "/TEDSAI_Eduphoria/Eduphoria_Controller/Eduphoria_Controller/Eduphoria_Controller_run.bat " + strCollectionYear  + " " + "TEDS-AI-Template-Master.xlsx"
 								+  " " + "TestIds.csv" + " " + "Eduphoria" + " " + strLeaCdn + " " + '"' + stroutputDir + '/' + '"' + " " + strxmlFile + " " + '"' + currentDir + "/TEDSAI_Eduphoria" + '"' + " " + '"' + javaHome + '"'; ;
 
@@ -2100,13 +2163,15 @@ public class TedsAI extends JFrame {
 								Process p = null;
 								try {
 									p = Runtime.getRuntime().exec(cmd);
-								} catch (IOException ex) {
-									logger.error("IOException with SwingWorker process : " + ex.getMessage());
+								} catch (IOException e1) {
+									logger.error("IOException with SwingWorker process : " + e1.getMessage());
+									logStackTrace(e1);
 								} 
 								try {
 									p.waitFor();
-								} catch (InterruptedException ite) {
-									logger.error("InterruptedException with SwingWorker process : " + ite.getMessage());
+								} catch (InterruptedException e1) {
+									logger.error("InterruptedException with SwingWorker process : " + e1.getMessage());
+									logStackTrace(e1);
 								}
 						
 								if(logger.isInfoEnabled()){
@@ -2135,6 +2200,7 @@ public class TedsAI extends JFrame {
 									JOptionPane.ERROR_MESSAGE
 									);
 								logger.error("FileNotFoundException when reading Talend batch log file : " + e1.getMessage());
+								logStackTrace(e1);
 							}
 						
 							String line = null;
@@ -2147,14 +2213,15 @@ public class TedsAI extends JFrame {
 										txtLogOutputAware.append("\n" + line);
 									}
 								}
-							} catch (IOException ioe) {
+							} catch (IOException e1) {
 								JOptionPane.showMessageDialog(
 									frame,  
 									"Error reading batchlog file", 
 									"TEDS-AI",
 									JOptionPane.ERROR_MESSAGE
 									); 
-								logger.error("IOException with SwingWorker process : " + ioe.getMessage());
+								logger.error("IOException with SwingWorker process : " + e1.getMessage());
+								logStackTrace(e1);
 							}   
 						}
 					}
@@ -2274,8 +2341,9 @@ public class TedsAI extends JFrame {
 				
 					try {
 						Class.forName("com.mysql.cj.jdbc.Driver");
-					} catch (ClassNotFoundException ce) {
-						logger.error("MySQL JDBC driver not found", ce);
+					} catch (ClassNotFoundException e1) {
+						logger.error("MySQL JDBC driver not found", e1);
+						logStackTrace(e1);
 					}
 					
 					/**
@@ -2305,9 +2373,9 @@ public class TedsAI extends JFrame {
 							try {
 								conn = DriverManager.		         
 										getConnection("jdbc:mysql://" + strDbHost + ":" + strDbPort + "/" + strDatabase + "?verifyServerCertificate=true&useSSL=true&requireSSL=true", strDbUsername, strDbPassword);
-							} catch (SQLException ce1) {
-								logger.error("AWS MySQL Eduphoria database connection failed : " + ce1.getMessage());
-								logger.debug("Connection to AWS Eduphoria database failed : " + ce1.getMessage());
+							} catch (SQLException e1) {
+								logger.error("AWS MySQL Eduphoria database connection failed : " + e1.getMessage());
+								logStackTrace(e1);
 							}
 
 							if (conn != null) {
@@ -2327,14 +2395,13 @@ public class TedsAI extends JFrame {
 										JOptionPane.ERROR_MESSAGE
 										);
 								logger.error("IOException Aware context file not found : " + e1.getMessage());
+								logStackTrace(e1);
 							}
 				
 							for (String line : lines) {
 								if (line.startsWith("CollectionYear=")) {
 									strCollectionYearSQL = line.substring(15);
 									logger.info("Collection year value for SQL: " + strCollectionYearSQL);
-									// for debug only -- we only have tests for 2016
-									// strCollectionYearSQL = "2016";
 									continue;
 								}	
 							}
@@ -2385,10 +2452,12 @@ public class TedsAI extends JFrame {
 								rs.close();
 								statement.close();
 								conn.close();
-							} catch (SQLException se) { //  Handle errors for JDBC
-								logger.error("SQLException JDBC error retrieving Aware tests : " + se.getMessage());
-							} catch (Exception ae) { 	//  Handle errors for Class.forName
-								logger.error("General exception retrieving Aware tests : " + ae.getMessage());
+							} catch (SQLException e1) { //  Handle errors for JDBC
+								logger.error("SQLException JDBC error retrieving Aware tests : " + e1.getMessage());
+								logStackTrace(e1);
+							} catch (Exception e1) { 	//  Handle errors for Class.forName
+								logger.error("General exception retrieving Aware tests : " + e1.getMessage());
+								logStackTrace(e1);
 							} finally {					//  finally block used to close resources
 								try {
 									if (statement != null)
@@ -2398,8 +2467,9 @@ public class TedsAI extends JFrame {
 								try {
 									if (conn != null)
 										conn.close();
-								} catch (SQLException se) {
-									logger.error("SQLException closing Aware database connection : " + se.getMessage());
+								} catch (SQLException e1) {
+									logger.error("SQLException closing Aware database connection : " + e1.getMessage());
+									logStackTrace(e1);
 								} //  end finally try
 							} //  end try
 						
@@ -2532,6 +2602,7 @@ public class TedsAI extends JFrame {
 		   					content = new String(Files.readAllBytes(path), charset);
 		   				} catch (IOException e1) {
 		   					logger.error("IOException reading context file : " + e1.getMessage());
+		   					logStackTrace(e1);
 		   				}
 		   		
 		   				content = content.replaceAll("LEACDN=[ -~]*", "LEACDN=" + replaceTxtCDN);
@@ -2555,16 +2626,18 @@ public class TedsAI extends JFrame {
 		   					Files.write(path, content.getBytes(charset));
 		   				} catch (IOException e1) {
 		   					logger.error("IOException writing context file : " + e1.getMessage());
+		   					logStackTrace(e1);
 		   				}
 		   				JOptionPane.showMessageDialog(frame,
 							"Configuration saved.", "TEDS-AI", 
 							JOptionPane.INFORMATION_MESSAGE);
 		            }
-		   	    } catch (Exception ae) {
+		   	    } catch (Exception e1) {
 		   	    	JOptionPane.showMessageDialog(frame,
 				          "Exception during Save button operation", "Error Message",
 				          JOptionPane.ERROR_MESSAGE);
-		   	    	logger.error("Exception saving context file : " + ae.getMessage());
+		   	    	logger.error("Exception saving context file : " + e1.getMessage());
+		   	    	logStackTrace(e1);
 		   	    } 
 		   		
 		   		if (rdbtnCollegeReadiness.isSelected()) {
@@ -2585,8 +2658,9 @@ public class TedsAI extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 		  	        Class.forName("com.mysql.cj.jdbc.Driver");
-		  	    } catch (ClassNotFoundException ce) {
-		  	    	logger.error("MySQL JDBC driver not found during database connection test : " + ce.getMessage());
+		  	    } catch (ClassNotFoundException e1) {
+		  	    	logger.error("MySQL JDBC driver not found during database connection test : " + e1.getMessage());
+		  	    	logStackTrace(e1);
 		   	    }
 
 		  	    logger.info("MySQL JDBC driver registered during Test");
@@ -2616,20 +2690,19 @@ public class TedsAI extends JFrame {
 							try {
 								conn = DriverManager.		         
 										getConnection("jdbc:mysql://" + strDbHost + ":" + strDbPort + "/" + strDatabase + "?verifyServerCertificate=true&useSSL=true&requireSSL=true", strDbUsername, strDbPassword);
-							} catch (SQLException ce1) {
-								logger.error("AWS MySQL Eduphoria database connection failed during Test : " + ce1.getMessage());
-								logger.debug("Connection to AWS Eduphoria database failed during Test : " + ce1.getMessage());
+							} catch (SQLException e1) {
 								JOptionPane.showMessageDialog(
 										frame,  
 										"Eduphoria database connection failed", 
 										"TEDS-AI",
 										JOptionPane.ERROR_MESSAGE
-										); 
+										);
+								logger.error("AWS MySQL Eduphoria database connection failed during Test : " + e1.getMessage());
+								logStackTrace(e1);
 							}
 
 							if (conn != null) {
 								logger.info("AWS MySQL Eduphoria database connection successful during Test");
-								logger.debug("AWS MySQL Eduphoria database connection successful during Test");
 								JOptionPane.showMessageDialog(
 										frame,  
 										"Eduphoria database connection succeeded", 
@@ -2678,11 +2751,12 @@ public class TedsAI extends JFrame {
 	    		   textArea.setText(content);
 	    		   textArea.setEditable(false);   // not editable - set to true if want to edit context file
 	    		   JOptionPane.showMessageDialog(frame, scrollPane, "Configuration file", JOptionPane.INFORMATION_MESSAGE); 
-	    	   } catch (IOException e12) {
+	    	   } catch (IOException e1) {
 	    		   JOptionPane.showMessageDialog(frame,
 					          "Configuration file not viewable", "Error Message",
 					          JOptionPane.ERROR_MESSAGE);
-	    		   logger.error("Configuration file not viewable : " + e12.getMessage());
+	    		   logger.error("Configuration file not viewable : " + e1.getMessage());
+	    		   logStackTrace(e1);
 	    	   }		
 		    }	
 		});
@@ -2707,55 +2781,40 @@ public class TedsAI extends JFrame {
 		 * Documentation subMenu item event handler
 		 * 
 		 */
-		
 		mntmDocumentation.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+	       public void actionPerformed(ActionEvent e) {
+		    	   
+				URL url = null;
+				String filename = currentDir + "/Docs/TEDS-AI_UserGuide.pdf";
+				File doc = new File(filename);
 			
-				String filename = currentDir + "/Docs/TEDS-AI-Intro.pdf";
 				try {
-					viewer = new Viewer();
-				} catch (Exception e4) {
-					logger.error("Exception during Adobe viewer creation : " + e4.getMessage());
+					url = new URL("https://texasstudentdatasystem.org/WorkArea/DownloadAsset.aspx?id=51539610138");
+				} catch (MalformedURLException e1) {
+					JOptionPane.showMessageDialog(frame,
+					         "URL where user documentation exists is incorrect or malformed", "Error Message",
+					         JOptionPane.ERROR_MESSAGE);
+					logger.error("URL where user documentation exists is incorrect or malformed : " + e1.getMessage());
+					logStackTrace(e1);
+				}
+					
+				try {
+					FileUtils.copyURLToFile(url, doc, 10000, 10000);
+				} catch (IOException e1) {
+					 JOptionPane.showMessageDialog(frame,
+					          "User interface is unable to read the user documentation", "Error Message",
+					          JOptionPane.ERROR_MESSAGE);
+					 logger.error("User interface is unable to read the user documentation : " + e1.getMessage());
+					 logStackTrace(e1);
 				}
 				
-				FileInputStream fis = null;
-				try {
-					fis = new FileInputStream(filename);
-				} catch (FileNotFoundException e3) {
-					logger.error("Exception during PDF file read : " + e3.getMessage());
-					e3.printStackTrace();
-				}
-				try {
-					viewer.setDocumentInputStream(fis);
-				} catch (Exception e2) {
-					logger.error("Exception during setting file to Adobe viwer : " + e2.getMessage());
-					e2.printStackTrace();
-				}
-				getContentPane().add(viewer, BorderLayout.CENTER);
-				try {
-					viewer.activate();
-				} catch (Exception e1) {
-					logger.error("Exception activating Adobe viewer : " + e1.getMessage());
-					e1.printStackTrace();
-				} 
-								
-				frame2 = new JFrame("TEDS-AI documentation");
-				frame2.setSize(1024, 986);
-				frame2.setLocationRelativeTo(null);
-				frame2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				frame2.setVisible(true);
-				Image image2 = null;
-				try {
-					image2 = ImageIO.read(this.getClass().getResource("/teds_ai/resources/favicon-96x96.png"));
-				} catch (IOException e6) {
-					logger.error("Exception during reading of UI icon for documentation frame : " + e6.getMessage());
-				}
-				frame2.setIconImage(image2);
-				frame2.getContentPane().add(viewer);
-
-	    	}
+				String formattedFilename = filename.replace("/", "\\");
+				JOptionPane.showMessageDialog(frame,
+	                    "User documentation file downloaded successfully to " + formattedFilename, "Message",
+	                    JOptionPane.INFORMATION_MESSAGE);
+			}	
 		});
-		
+			
 		/** 
 		 * 
 		 * About subMenu item event handler
@@ -2802,6 +2861,7 @@ public class TedsAI extends JFrame {
 						file.createNewFile();
 					} catch (IOException e1) {
 						logger.error("IOException UI log file does not exist and cannot be created : " + e1.getMessage());
+						logStackTrace(e1);
 					}
 				}
 				
@@ -2813,19 +2873,21 @@ public class TedsAI extends JFrame {
 				    while ((str = buff.readLine()) != null) {
 				    	textArea.append("\n"+str);
 				    }
-				} catch (IOException ex) {
+				} catch (IOException e1) {
 				    JOptionPane.showMessageDialog(frame,
 					          "Log file not viewable", "UI Detailed Log",
 					          JOptionPane.ERROR_MESSAGE);
-				    logger.error("UI log file not viewable : " + ex.getMessage());
+				    logger.error("UI log file not viewable : " + e1.getMessage());
+				    logStackTrace(e1);
 				}
 			    textArea.setEditable(false);
 			    JScrollPane scrollPane = new JScrollPane(textArea);
 			    JOptionPane.showMessageDialog(frame, scrollPane, "UI Detailed Log", JOptionPane.INFORMATION_MESSAGE );
 			    try {
 					buff.close();
-				} catch (IOException ex1) {
-					logger.error("IOException closing UI log file : " + ex1.getMessage());
+				} catch (IOException e1) {
+					logger.error("IOException closing UI log file : " + e1.getMessage());
+					logStackTrace(e1);
 				} 
 			}
 		});
@@ -2840,6 +2902,7 @@ public class TedsAI extends JFrame {
 						file.createNewFile();
 					} catch (IOException e1) {
 						logger.error("IOException College log file does not exist and cannot be created : " + e1.getMessage());
+						logStackTrace(e1);
 					}
 				}
 				
@@ -2851,19 +2914,21 @@ public class TedsAI extends JFrame {
 				    while ((str = buff.readLine()) != null) {
 				    	textArea.append("\n"+str);
 				    }
-				} catch (IOException exl) {
+				} catch (IOException e1) {
 				    JOptionPane.showMessageDialog(frame,
 					          "Log file not viewable", "College Readiness Detailed Log",
 					          JOptionPane.ERROR_MESSAGE);
-				    logger.error("College log file not viewable : " + exl.getMessage());
+				    logger.error("College log file not viewable : " + e1.getMessage());
+				    logStackTrace(e1);
 				}
 			    textArea.setEditable(false);
 			    JScrollPane scrollPane = new JScrollPane(textArea);
 			    JOptionPane.showMessageDialog(frame, scrollPane, "College Readiness Detailed Log", JOptionPane.INFORMATION_MESSAGE );
 			    try {
 					buff.close();
-				} catch (IOException ex1) {
-					logger.error("IOException closing College log file : " + ex1.getMessage());
+				} catch (IOException e1) {
+					logger.error("IOException closing College log file : " + e1.getMessage());
+					logStackTrace(e1);
 				} 
 			}
 		});
@@ -2878,6 +2943,7 @@ public class TedsAI extends JFrame {
 						file.createNewFile();
 					} catch (IOException e1) {
 						logger.error("IOException Aware log file does not exist and cannot be created : " + e1.getMessage());
+						logStackTrace(e1);
 					}
 				}
 				
@@ -2889,19 +2955,21 @@ public class TedsAI extends JFrame {
 				    while ((str = buff.readLine()) != null) {
 				    	textArea.append("\n"+str);
 				    }
-				} catch (IOException exl) {
+				} catch (IOException e1) {
 				    JOptionPane.showMessageDialog(frame,
 					          "Log file not viewable", "Aware Detailed Log",
 					          JOptionPane.ERROR_MESSAGE);
-				    logger.error("Aware log file not viewable : " + exl.getMessage());
+				    logger.error("Aware log file not viewable : " + e1.getMessage());
+				    logStackTrace(e1);
 				}
 			    textArea.setEditable(false);
 			    JScrollPane scrollPane = new JScrollPane(textArea);
 			    JOptionPane.showMessageDialog(frame, scrollPane, "Aware Detailed Log", JOptionPane.INFORMATION_MESSAGE );
 			    try {
 					buff.close();
-				} catch (IOException ex1) {
-					logger.error("IOException closing Aware log file : " + ex1.getMessage());
+				} catch (IOException e1) {
+					logger.error("IOException closing Aware log file : " + e1.getMessage());
+					logStackTrace(e1);
 				} 
 			}
 		});
@@ -2916,8 +2984,9 @@ public class TedsAI extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 			    try {
 			        Desktop.getDesktop().browse(new URI("https://tealprod.tea.state.tx.us/TSDS/Support"));
-			    } catch (IOException | URISyntaxException ex1) {
-			    	logger.error("Exception resolving TSDS Support URL : " + ex1.getMessage());
+			    } catch (IOException | URISyntaxException e1) {
+			    	logger.error("Exception resolving TSDS Support URL : " + e1.getMessage());
+			    	logStackTrace(e1);
 			    }
 			}
 			
